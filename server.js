@@ -3,6 +3,7 @@ var app = express();
 app.use(express.static('public'));
 //app.listen(process.env.PORT || 8080);
 
+
 let server;
 
 function runServer() {
@@ -34,9 +35,12 @@ function closeServer() {
   });
 }
 
- runServer();
-// console.log("hello world")
+ //runServer();
 
+
+if (require.main === module) {
+  runServer().catch(err => console.error(err));
+};
 
 module.exports = {app, runServer, closeServer};
 
