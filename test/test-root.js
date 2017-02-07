@@ -8,9 +8,9 @@ const {app, runServer, closeServer} = require('../server');
 
 describe('access folder', function() {
 
- before(function() {
-    return runServer();
-  });
+  // before(function() {
+  //   return runServer();
+  // });
 
   afterEach(function() {
     return closeServer();

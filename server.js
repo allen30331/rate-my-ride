@@ -34,7 +34,8 @@ function closeServer() {
   });
 }
 
-//runServer();
+ runServer();
+// console.log("hello world")
 
 
 module.exports = {app, runServer, closeServer};
