@@ -19,7 +19,7 @@ describe('Rate Your Ride Api', function() {
 
   describe('access root folder', function() {
   	it('should return 200 status code and html', function() {
-  	//let res;
+  	let res;
 	return chai.request(app)
 		.get('/')
 		.then(function(_res) {
