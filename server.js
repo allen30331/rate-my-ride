@@ -1,7 +1,24 @@
-var express = require('express');
-var app = express();
+const bodyParser = require('body-parser');
+const express = require('express');
+const mongoose = require('mongoose');
+const morgan = require('morgan');
+
+const {DATABASE_URL, PORT} = require('./config');
+const {BlogPost} = require('./models');
+
+const app = express();
+
 app.use(express.static('public'));
+app.use(morgan('common'));
+app.use(bodyParser.json());
 //app.listen(process.env.PORT || 8080);
+
+mongoose.Promise = global.Promise;
+
+
+
+
+
 
 
 let server;
@@ -35,7 +52,6 @@ function closeServer() {
   });
 }
 
- //runServer();
 
 
 if (require.main === module) {

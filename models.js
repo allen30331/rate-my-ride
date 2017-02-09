@@ -5,6 +5,7 @@ const rateDriverSchema = mongoose.Schema({
   company: {type: String, required: true},
   tagNumber: {type: Number, required: true},
   driverRating: {type: Number, required: true},
+  tags: {type: String},
   content: {type: String},
   created: {type: Date, default: Date.now}
 });
