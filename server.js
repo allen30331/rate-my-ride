@@ -11,13 +11,13 @@ const app = express();
 app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(bodyParser.json());
-//app.listen(process.env.PORT || 8080);
 
 mongoose.Promise = global.Promise;
 
+const publicFolderRouter = require('./publicFolderRouter')
 
 
-
+app.use('/public', publicFolderRouter);
 
 
 
