@@ -14,12 +14,27 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
-const publicFolderRouter = require('./publicFolderRouter')
+//Static endpoints begin//
+app.get('/add-driver', (req, res) => {
+  res.sendFile(__dirname + '/public/add-driver.html');
+});
 
+app.get('/dashboard', (req, res) => {
+  res.sendFile(__dirname + '/public/dashboard.html');
+});
 
-app.use('/public', publicFolderRouter);
+app.get('/log-in', (req, res) => {
+  res.sendFile(__dirname + '/public/log-in.html');
+});
 
+app.get('/rate-driver', (req, res) => {
+  res.sendFile(__dirname + '/public/log-in.html');
+});
 
+app.get('/sign-up', (req, res) => {
+  res.sendFile(__dirname + '/public/sign-up.html');
+});
+//Static endpoints end//
 
 let server;
 

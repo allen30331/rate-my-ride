@@ -39,7 +39,7 @@ describe('GET endpoint', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/add-driver.html')
+    .get('/add-driver')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -52,7 +52,7 @@ describe('GET endpoint', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/dashboard.html')
+    .get('/dashboard')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -65,7 +65,7 @@ describe('GET endpoint', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/log-in.html')
+    .get('/log-in')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -78,7 +78,7 @@ describe('GET endpoint', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/rate-driver.html')
+    .get('/rate-driver')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -91,7 +91,7 @@ describe('GET endpoint', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('./sign-up.html')
+    .get('/sign-up')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
