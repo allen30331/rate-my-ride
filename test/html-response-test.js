@@ -9,7 +9,9 @@ chai.use(chaiHttp);
 const {app, runServer, closeServer} = require('../server');
 
 
-describe('Rate Your Ride Page Response', function() {
+
+
+describe('GET endpoint', function() {
 
   before(function() {
     return runServer();
@@ -37,7 +39,7 @@ describe('Rate Your Ride Page Response', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/')
+    .get('/add-driver.html')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -50,7 +52,7 @@ describe('Rate Your Ride Page Response', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/')
+    .get('/dashboard.html')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -63,7 +65,7 @@ describe('Rate Your Ride Page Response', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/')
+    .get('/log-in.html')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -76,7 +78,7 @@ describe('Rate Your Ride Page Response', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/')
+    .get('/rate-driver.html')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
@@ -89,7 +91,7 @@ describe('Rate Your Ride Page Response', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/')
+    .get('./sign-up.html')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
