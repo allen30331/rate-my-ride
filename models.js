@@ -1,30 +1,39 @@
 const mongoose = require('mongoose');
 
-const rateDriverSchema = mongoose.Schema({
+const driverRatingSchema = mongoose.Schema({
   driverName: {type: String, required: true},
   company: {type: String, required: true},
   tagNumber: {type: Number, required: true},
+  city: {type: String, required: true},
   driverRating: {type: Number, required: true},
   tags: {type: String},
-  content: {type: String},
+  reviews: {
+    rating: {type: Number, required: true},
+    tag: String,
+    review: String 
+  },
   created: {type: Date, default: Date.now}
 });
 
 
-// rateDriverSchema.virtual('authorName').get(function() {
+// driverRatingSchema.virtual('authorName').get(function() {
 //   return `${this.author.firstName} ${this.author.lastName}`.trim();
 // });
 
-rateDriverSchema.methods.apiRepr = function() {
+driverRatingSchema.methods.apiRepr = function() {
   return {
     id: this._id,
-    author: this.authorName,
-    content: this.content,
-    title: this.title,
+    driverName: this.driverName,
+    company: this.company,
+    tagNumber: this.tagNumber,
+    city: this.city,
+    driverRating: this.driverRating,
+    tags: this.tags,
+    review: this.review,
     created: this.created
   };
 }
 
-const RateDriver = mongoose.model('RateDriver', rateDriverSchema);
+const DriverRating = mongoose.model('DriverRating', driverRatingSchema);
 
-module.exports = {RateDriver};
+module.exports = {DriverRating};
