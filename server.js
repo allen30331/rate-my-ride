@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 
 const {DATABASE_URL, PORT} = require('./config');
-const {BlogPost} = require('./models');
+const {Driver} = require('./models');
 
 const app = express();
 
@@ -36,16 +36,58 @@ app.get('/sign-up', (req, res) => {
 });
 //Static endpoints end//
 
+
+app.get('/driver', (req, res) => {
+ // Driver.create({driverName: "Victor",
+ //  company: "thinkful",
+ //  tagNumber: 1234,
+ //  city: "Miami",
+ //  driverRating: 5,
+ //  tags:  "Good",
+ //  reviews: [{
+ //    rating: 5,
+ //    tag: "NIce",
+ //    review: "Good job." 
+ //  }]}, (err, driver) => {
+ //  	console.log(driver, err);
+ //  });
+ Driver
+    .find({}, (err, drivers) => {
+    	console.log(drivers);	
+    	res.json(drivers.map(driver => driver.apiRepr()));
+    })
+    .exec()
+    .then(drivers => {
+    	console.log(drivers)
+    res.json(drivers.map(driver => driver.apiRepr()));
+    })
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+ 
+
+
+
 let server;
 
 function runServer() {
-  const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
-    server = app.listen(port, () => {
-      console.log(`Your app is listening on port ${port}`);
-      resolve(server);
-    }).on('error', err => {
-      reject(err)
+    mongoose.connect(DATABASE_URL, err => {
+    	console.log(DATABASE_URL);
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(PORT, () => {
+        console.log(`Your app is listening on port ${PORT}`);
+        resolve();
+      })
+      .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
     });
   });
 }

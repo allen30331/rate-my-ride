@@ -1,4 +1,4 @@
 exports.DATABASE_URL = process.env.DATABASE_URL ||
                        global.DATABASE_URL ||
-                      'mongodb://localhost/rate-my-ride-app';
+                      'mongodb://localhost/rate-my-ride';
 exports.PORT = process.env.PORT || 8080;
