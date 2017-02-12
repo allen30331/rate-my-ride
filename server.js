@@ -37,29 +37,13 @@ app.get('/sign-up', (req, res) => {
 //Static endpoints end//
 
 
+
 app.get('/driver', (req, res) => {
- // Driver.create({driverName: "Victor",
- //  company: "thinkful",
- //  tagNumber: 1234,
- //  city: "Miami",
- //  driverRating: 5,
- //  tags:  "Good",
- //  reviews: [{
- //    rating: 5,
- //    tag: "NIce",
- //    review: "Good job." 
- //  }]}, (err, driver) => {
- //  	console.log(driver, err);
- //  });
- Driver
-    .find({}, (err, drivers) => {
-    	console.log(drivers);	
-    	res.json(drivers.map(driver => driver.apiRepr()));
-    })
+  Driver
+    .find()
     .exec()
-    .then(drivers => {
-    	console.log(drivers)
-    res.json(drivers.map(driver => driver.apiRepr()));
+    .then(drivers => { 
+      res.json(drivers.map(driver => driver.apiRepr()));
     })
     .catch(err => {
       console.error(err);
@@ -67,7 +51,62 @@ app.get('/driver', (req, res) => {
     });
 });
 
+
+
+
+// app.get('/driver', (req, res) => {
+//  // Driver.create({driverName: "Victor",
+//  //  company: "thinkful",
+//  //  tagNumber: 1234,
+//  //  city: "Miami",
+//  //  driverRating: 5,
+//  //  tags:  "Good",
+//  //  reviews: [{
+//  //    rating: 5,
+//  //    tag: "NIce",
+//  //    review: "Good job." 
+//  //  }]}, (err, driver) => {
+//  //  	console.log(driver, err);
+//  //  });
+//  Driver
+//     .find({}, (err, drivers) => {
+//     	console.log(drivers);	
+//     	res.json(drivers.map(driver => driver.apiRepr()));
+//     })
+//     .exec()
+//     .then(drivers => {
+//     	console.log(drivers)
+//     res.json(drivers.map(driver => driver.apiRepr()));
+//     })
+//     .catch(err => {
+//       console.error(err);
+//       res.status(500).json({error: 'something went terribly wrong'});
+//     });
+// });
+
  
+app.post('/new', (req, res) => {
+
+  const requiredFields = ['driverName', 'company', 'tagNumber', 'city'];
+  requiredFields.forEach(field => {
+    if (!(field in req.body)) {
+      res.status(400).json(
+        {error: `Missing "${field}" in request body`});
+    }});
+
+  Driver
+    .create({
+      driverName: req.body.driverName,
+      company: req.body.company,
+      tagNumber: req.body.tagNumber,
+      city: req.body.city
+    })
+    .then(driverEntry => res.status(201).json(driverEntry.apiRepr()))
+    .catch(err => {
+        console.error(err);
+        res.status(500).json({error: 'Something went wrong'});
+    });
+});
 
 
 
