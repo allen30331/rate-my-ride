@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
+const path = require('path');
+
 const {DATABASE_URL, PORT} = require('./config');
 const {Driver} = require('./models');
 
@@ -14,31 +16,44 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
-//Static endpoints begin//
-app.get('/add-driver', (req, res) => {
-  res.sendFile(__dirname + '/public/add-driver.html');
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+//Get driver by Tag Number
+app.get('/driver-tag/:tagNumber', (req, res) => {
+  
+  const tagNumber = req.params.tagNumber;
+ 
+  Driver
+    .findOne({tagNumber})
+    .exec()
+    .then(drivers => res.json(drivers.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
 });
 
-app.get('/dashboard', (req, res) => {
-  res.sendFile(__dirname + '/public/dashboard.html');
+
+
+//Get driver by Id
+app.get('/driver-id/:id', (req, res) => {
+  console.log(req.params.id);
+  Driver
+    .findById(req.params.id)
+    .exec()
+    .then(drivers => res.json(drivers.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
 });
 
-app.get('/log-in', (req, res) => {
-  res.sendFile(__dirname + '/public/log-in.html');
-});
-
-app.get('/rate-driver', (req, res) => {
-  res.sendFile(__dirname + '/public/log-in.html');
-});
-
-app.get('/sign-up', (req, res) => {
-  res.sendFile(__dirname + '/public/sign-up.html');
-});
-//Static endpoints end//
 
 
-
-app.get('/driver', (req, res) => {
+//Get all drivers
+app.get('/drivers', (req, res) => {
+  
   Driver
     .find()
     .exec()
@@ -53,39 +68,8 @@ app.get('/driver', (req, res) => {
 
 
 
-
-// app.get('/driver', (req, res) => {
-//  // Driver.create({driverName: "Victor",
-//  //  company: "thinkful",
-//  //  tagNumber: 1234,
-//  //  city: "Miami",
-//  //  driverRating: 5,
-//  //  tags:  "Good",
-//  //  reviews: [{
-//  //    rating: 5,
-//  //    tag: "NIce",
-//  //    review: "Good job." 
-//  //  }]}, (err, driver) => {
-//  //  	console.log(driver, err);
-//  //  });
-//  Driver
-//     .find({}, (err, drivers) => {
-//     	console.log(drivers);	
-//     	res.json(drivers.map(driver => driver.apiRepr()));
-//     })
-//     .exec()
-//     .then(drivers => {
-//     	console.log(drivers)
-//     res.json(drivers.map(driver => driver.apiRepr()));
-//     })
-//     .catch(err => {
-//       console.error(err);
-//       res.status(500).json({error: 'something went terribly wrong'});
-//     });
-// });
-
- 
-app.post('/new', (req, res) => {
+//Add driver
+app.post('/new-driver', (req, res) => {
 
   const requiredFields = ['driverName', 'company', 'tagNumber', 'city'];
   requiredFields.forEach(field => {
@@ -98,14 +82,48 @@ app.post('/new', (req, res) => {
     .create({
       driverName: req.body.driverName,
       company: req.body.company,
-      tagNumber: req.body.tagNumber,
-      city: req.body.city
+      tagNumber: req.body.tagNumber.toUpperCase().replace(/\s+/g, ''),
+      city: req.body.city,
+      averageDriverRating: req.body.reviews.driverRating,
+      descriptionSummary: req.body.reviews.description,
+      reviews: req.body.reviews
+      //driverRating: req.body.driverRating,
+      //created: req.body.created
     })
     .then(driverEntry => res.status(201).json(driverEntry.apiRepr()))
     .catch(err => {
         console.error(err);
         res.status(500).json({error: 'Something went wrong'});
     });
+
+});
+
+
+//Update
+app.put('/driver/:id', (req, res) => {
+
+  if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+    const message = (
+      `Request path id (${req.params.id}) and request body id ` +
+      `(${req.body.id}) must match`);
+    console.error(message);
+    res.status(400).json({message: message});
+  }
+
+  const toUpdate = {};
+  const updateableFields = ['tagNumber', 'driverRating', 'description', 'comment'];
+
+  updateableFields.forEach(field => {
+    if (field in req.body) {
+      toUpdate[field] = req.body[field];
+    }
+  });
+
+  Driver
+    .findByIdAndUpdate(req.params.id, {$set: toUpdate})
+    .exec()
+    .then(driver => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
 
