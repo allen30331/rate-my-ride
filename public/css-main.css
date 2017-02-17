@@ -1,0 +1,12 @@
+header {
+	background-color: #800080;
+	color: white;
+}
+
+.log-in ul {
+	list-style: none;
+}
+
+.log-in li {
+	display: inline-block;
+}

@@ -7,6 +7,7 @@
     "averageDriverRating": 3,
     "descriptionSummary": {
         "Nice": 1
+        "Good": 2
         },
     "reviews": [
       {
@@ -15,7 +16,15 @@
         "comment": "it was awesome",
         "_id": "58a516cd66f88623fcea9adc",
         "created": "2017-02-16T03:04:45.996Z"
+    },
+    {
+        "driverRating": 4,
+        "description": "Nice",
+        "comment": "it was great",
+        "_id": "58a516cd66f88623fcea9adc",
+        "created": "2017-02-16T03:04:45.996Z"
     }
+ 
     ]
 
 

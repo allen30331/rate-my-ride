@@ -16,38 +16,31 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
-app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static(path.join(__dirname, 'public')));
+    
 
-
-//Get driver by Tag Number
-app.get('/driver-tag/:tagNumber', (req, res) => {
-  
-  const tagNumber = req.params.tagNumber;
- 
-  Driver
-    .findOne({tagNumber})
-    .exec()
-    .then(drivers => res.json(drivers.apiRepr()))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
+//Static endpoints begin//
+  app.get('/add-driver', (req, res) => {
+    res.sendFile(__dirname + '/public/add-driver.html');
 });
 
-
-
-//Get driver by Id
-app.get('/driver-id/:id', (req, res) => {
-  console.log(req.params.id);
-  Driver
-    .findById(req.params.id)
-    .exec()
-    .then(drivers => res.json(drivers.apiRepr()))
-    .catch(err => {
-      console.error(err);
-      res.status(500).json({error: 'something went terribly wrong'});
-    });
+app.get('/dashboard', (req, res) => {
+  res.sendFile(__dirname + '/public/dashboard.html');
 });
+
+app.get('/log-in', (req, res) => {
+  res.sendFile(__dirname + '/public/log-in.html');
+});
+
+app.get('/rate-driver', (req, res) => {
+  res.sendFile(__dirname + '/public/log-in.html');
+});
+
+app.get('/sign-up', (req, res) => {
+  res.sendFile(__dirname + '/public/sign-up.html');
+});
+//Static endpoints end//
+
 
 
 
@@ -68,8 +61,45 @@ app.get('/drivers', (req, res) => {
 
 
 
-//Add driver
-app.post('/new-driver', (req, res) => {
+//Get driver by Tag Number
+app.get('/drivers/:tagNumber/tagNumber', (req, res) => {
+  
+  const tagNumber = req.params.tagNumber;
+ 
+  Driver
+    .findOne({tagNumber})
+    .exec()
+    .then(drivers => res.json(drivers.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+// /api/model/:id/action
+// /api/model/task/action
+//if you just want to get data, api/model will give you all the data pertaining 
+//to that model. 
+//api/drivers/:id/id
+//api/drivers/:tagname/tagname
+
+
+//Get driver by Id
+app.get('/drivers/:id', (req, res) => {
+ 
+    Driver
+    .findById(req.params.id)
+    .exec()
+    .then(drivers => res.json(drivers.apiRepr()))
+    .catch(err => {
+      console.error(err);
+      res.status(500).json({error: 'something went terribly wrong'});
+    });
+});
+
+
+//Create driver
+app.post('/drivers', (req, res) => {
 
   const requiredFields = ['driverName', 'company', 'tagNumber', 'city'];
   requiredFields.forEach(field => {
@@ -99,8 +129,8 @@ app.post('/new-driver', (req, res) => {
 });
 
 
-//Update
-app.put('/driver/:id', (req, res) => {
+//Update review
+app.put('/drivers/:id', (req, res) => {
 
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
     const message = (
@@ -111,7 +141,7 @@ app.put('/driver/:id', (req, res) => {
   }
 
   const toUpdate = {};
-  const updateableFields = ['tagNumber', 'driverRating', 'description', 'comment'];
+  const updateableFields = ['tagNumber'];
 
   updateableFields.forEach(field => {
     if (field in req.body) {
@@ -127,6 +157,53 @@ app.put('/driver/:id', (req, res) => {
 });
 
 
+
+//Delete review 
+app.delete('/review/:id', (req, res) => {
+  Driver
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
+
+
+
+//Add driver review
+app.post('/drivers/:id/reviews', (req, res) => {
+
+  const requiredFields = ['driverRating', 'description', 'comment'];
+  requiredFields.forEach(field => {
+    if (!(field in req.body)) {
+      res.status(400).json(
+        {error: `Missing "${field}" in request body`});
+    }});
+
+      
+  Driver
+    .findById(req.params.id)
+    .exec()
+    .then(function(driver) {
+      driver.reviews.push(req.body)
+      driver.save()
+      res.json(driver.apiRepr())
+      res.status(204).end()
+    })  
+    .catch(err => res.status(500).json({message: 'Internal server error', error: err.message}));
+});
+
+
+
+
+//Delete review 
+app.delete('/review/:id', (req, res) => {
+  Driver
+    .findByIdAndRemove(req.params.id)
+    .exec()
+    .then(() => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
 
 let server;
 
