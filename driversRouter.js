@@ -88,7 +88,9 @@ router.post('/', (req, res) => {
 });
 
 
-//Update review
+
+
+//Update driver information
 router.put('/:id', (req, res) => {
 
   if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
@@ -100,7 +102,7 @@ router.put('/:id', (req, res) => {
   }
 
   const toUpdate = {};
-  const updateableFields = ['driverRating', 'description', 'comment'];
+  const updateableFields = ['driverName', 'company', 'tagNumber', 'city'];
 
   updateableFields.forEach(field => {
     if (field in req.body) {
@@ -115,6 +117,39 @@ router.put('/:id', (req, res) => {
     .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+
+//Update review
+router.put('/:id/review', (req, res) => {
+
+	let driverRating = req.body.driverRating;
+	let description = req.body.description;
+	let comment = req.body.comment; 
+
+	let indexOfReview = 0; 
+
+	Driver
+    .find()
+    .exec()
+    .then(function(listOfDrivers) {
+      listOfDrivers.forEach(function(driver) {
+         driver.reviews.forEach(function(review) {
+           if(review._id.toString() !== req.params.id) {
+             indexOfReview++;
+          }
+           else{
+           	driver.reviews[indexOfReview].driverRating = driverRating;
+            driver.reviews[indexOfReview].description = description;
+            driver.reviews[indexOfReview].comment = comment;
+            driver.save();
+          }
+          
+          indexOfReview = 0;
+         })
+      })
+    })
+    .then(() => res.status(204).end())
+    .catch(err => res.status(500).json({message: 'Internal server error'}));	
+});
 
 
 
