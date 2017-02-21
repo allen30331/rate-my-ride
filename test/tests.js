@@ -6,6 +6,7 @@ const should = chai.should();
 const chaiHttp = require('chai-http');
 const faker = require('faker');
 chai.use(chaiHttp);
+const mongoose = require('mongoose');
 
 const {app, runServer, closeServer} = require('../server');
 
@@ -35,16 +36,33 @@ function generateDriverTagNumber() {
   return type[Math.floor(Math.random() * type.length)];
 }
 
+function generateDriverDescription() {
+  let type = ['Good', 'Bad', 'Creepy', 'Nuetral'];
+  return type[Math.floor(Math.random() * type.length)];
+}
+
+function generateDriverRating() {
+  return Math.floor((Math.random() * 5) + 1);
+}
 
 // generate an object represnting a driver.
 // can be used to generate seed data for db
 // or request.body data
 function generateDriverData() {
   return {
-    name: faker.name.firstName(),
+    driverName: faker.name.firstName(),
     company: generateDriverCompany(),
     tagNumber: generateDriverTagNumber(),
-    city: faker.address.city()
+    city: faker.address.city(),
+    // averageDriverRating: reviews.driverRating,
+    // descriptionSummary: {},
+    reviews: [
+          {
+            driverRating: generateDriverRating(),
+            description: generateDriverDescription(),
+            comment: faker.lorem.sentence()
+          }
+    ]
   }
 }
 
@@ -84,13 +102,36 @@ function tearDownDb() {
 //Tests static endpoints begin
 describe('GET static pages', function() {
 
+
   before(function() {
     return runServer();
   });
 
+  beforeEach(function() {
+    return seedDriverData();
+  });
+
+  afterEach(function() {
+    return tearDownDb();
+  });
+
   after(function() {
     return closeServer();
-  })
+  });
+
+
+
+
+
+
+
+  // before(function() {
+  //   return runServer();
+  // });
+
+  // after(function() {
+  //   return closeServer();
+  // })
 
 
   describe('access root folder', function() {
@@ -179,17 +220,18 @@ describe('GET static pages', function() {
 //Driver tests begin
 describe('Test Driver routes', function() {
 
-  // it('should create a driver', function () {
-  //   const newDriver = generateDriverData();
-  //   return chai.request(app)
-  //   .post('/drivers')
-  //   .send(newDriver)
-  //   .then(function(res) {
-  //     res.should.have(201);
-  //     res.should.be.json;
-  //     res.body.should.be.a('object');
-  //   });
-  // });
+  it('should create a driver', function () {
+    const newDriver = generateDriverData();
+    return chai.request(app)
+    .post('/drivers')
+    .send(newDriver)
+    .then(function(res) {
+      res.should.have.status(201);
+      res.should.be.json;
+      res.body.should.be.a('object');
+      res.body.should.include.keys('id', 'driverName', 'company', 'tagNumber', 'city', 'averageDriverRating', 'descriptionSummary')   
+    });
+  });
 
 
   it('should get all drivers', function () {
@@ -201,9 +243,9 @@ describe('Test Driver routes', function() {
       res.should.have.status(200);
       res.should.be.json;
       res.should.be.an.array;
-      res.body.forEach(function(dream) {
-        dream.should.be.a('object');
-        dream.should.include.keys( 'id', 'driverName', 'company', 'tagNumber', 'city');
+      res.body.forEach(function(driver) {
+        driver.should.be.a('object');
+        driver.should.include.keys( 'id', 'driverName', 'company', 'tagNumber', 'city');
           });
     });
   })  

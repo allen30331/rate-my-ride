@@ -7,6 +7,7 @@ const driverSchema = mongoose.Schema({
   tagNumber: {type: String, required: true},
   city: {type: String, required: true},
     reviews: [{
+    userId: String,
     driverRating: Number,
     description: String, 
     comment: String,

@@ -96,6 +96,7 @@ router.post('/', (req, res) => {
 });
 
 
+//The user route is for development only, it will not be used in the live version. 
 // never expose all your users like below in a prod application
 // we're just doing this so we have a quick way to see
 // if we're creating users. keep in mind, you can also

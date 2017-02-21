@@ -10,7 +10,8 @@ const UserSchema = mongoose.Schema({
 UserSchema.methods.apiRepr =  function() {
 	return {
 		id: this.id,
-		username: this.username || ''
+		username: this.username || '',
+		//password: this.password
 	};
 }
 

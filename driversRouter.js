@@ -153,7 +153,7 @@ router.put('/:id/review', (req, res) => {
 
 
 
-//Add driver review
+//Add driver review to existing driver
 router.post('/:id/reviews', (req, res) => {
 
   const requiredFields = ['driverRating', 'description', 'comment'];
