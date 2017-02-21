@@ -54,8 +54,6 @@ function generateDriverData() {
     company: generateDriverCompany(),
     tagNumber: generateDriverTagNumber(),
     city: faker.address.city(),
-    // averageDriverRating: reviews.driverRating,
-    // descriptionSummary: {},
     reviews: [
           {
             driverRating: generateDriverRating(),
@@ -229,7 +227,10 @@ describe('Test Driver routes', function() {
       res.should.have.status(201);
       res.should.be.json;
       res.body.should.be.a('object');
-      res.body.should.include.keys('id', 'driverName', 'company', 'tagNumber', 'city', 'averageDriverRating', 'descriptionSummary')   
+      res.body.should.include.keys('id', 'driverName', 'company', 'tagNumber', 'city', 'averageDriverRating', 'descriptionSummary', 'reviews');   
+      res.body.reviews.forEach(function(review) {
+        review.should.include.keys('_id', 'driverRating', 'description', 'comment', 'created');
+      });
     });
   });
 
