@@ -1,9 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log In</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css-main.css">
+	<link rel="stylesheet" type="text/css" href="float-grid.css">
 </head>
 <body>
-	<h1>log in screen</h1>
+
+	<header>
+		<div class="row">
+				<div class="col-4">
+					<h2>rate my ride</h2>
+				</div>
+				<div class="col-4 search-box">
+					<form>
+						<input type="" name="">
+						<button>search</button>
+					</form>
+				</div>
+				<div class="col-4 log-or-sign">
+					<ul>
+						<li><a href="./sign-up.html">sign up</a></li>
+						<li>log in</li>
+					</ul>
+				</div>
+		</div>
+	</header>
+
+	<main>
+		<div class="row">
+			<div class="col-12">
+				<form>
+					<form class="log-in" action="/users" method="post" autocomplete="off">
+						<fieldset name="log-in" class="log-in">
+							<input type="text" name="username" id="username" placeholder="Username" required/>
+							<input type="password" name="password" id="password" placeholder="Password" required/>
+						</fieldset>
+						<button type='submit' class="log-in-button">Log In</button>
+					</form>
+				</form>
+			</div>
+		</div>
+	</main>
+
+
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="log-in.js"></script>
 </body>
 </html>

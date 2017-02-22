@@ -7,6 +7,20 @@ header {
 	list-style: none;
 }
 
-.log-in li {
+.log-or-sign li {
 	display: inline-block;
+	margin: 0 0 30px 30px;
+}
+
+
+.col-4.search-box {
+    transform: translateY(100%);
+}
+
+ul {
+    transform: translateY(25%);
+}
+
+.sign-up-form {
+	margin-top: 50px;
 }
