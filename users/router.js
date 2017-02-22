@@ -136,13 +136,37 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
 
 
 passport.use(basicStrategy);
+
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+
 router.use(passport.initialize());
+
 
 router.get('/me',
   passport.authenticate('basic', {session: false}),
   (req, res) => res.json({user: req.user.apiRepr()})
 );
 
+
+router.post('/login',
+  passport.authenticate('basic', {session: true}),
+  (req, res) => {
+    // console.log(req.body);
+    // console.log("req", req);
+    // console.log("res", res);
+    //res.json({user: req.user.apiRepr()});
+    res.redirect('/dashboard');
+    res.status(200).json({user: req.user.apiRepr()})
+  }
+);
 
 module.exports = {router};
 
@@ -158,35 +182,5 @@ module.exports = {router};
 
 
 
-
-// const express = require('express');
-// const router = express.Router();
-
-
-
-// const User = require('./models');
-
-
-
-
-// //This will retrieve all users
-// router.get('/', (req, res) => {
-  
- 
-// });
-
-
-// //This will retrieve a user by id
-// router.get('/:id', (req, res) => {
-  
- 
-// });
-
-
-// //This will create a new user
-// router.post('/', (req, res) => {
-  
- 
-// });
 
 
