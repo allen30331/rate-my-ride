@@ -8,7 +8,7 @@ function replaceSignUp() {
 
 function addUser(username, password, callback) {
   $.ajax({
-    url: 'http://localhost:8080/users',
+    url: '/users',  //http://localhost:8080
     type: 'POST',
     dataType: 'json',
     contentType: 'application/json',

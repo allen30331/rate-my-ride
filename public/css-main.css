@@ -13,9 +13,9 @@ header {
 }
 
 
-.col-4.search-box {
+/*.col-4.search-box {
     transform: translateY(100%);
-}
+}*/
 
 ul {
     transform: translateY(25%);
