@@ -1,10 +1,24 @@
 
-// function replaceSignUp() {
-//   $('.sign-up-title').html('Thanks for signing up');
-// }
+function renderData(data) {
+  $('.about').remove();
+  $('.main p').remove();
+  $('.main .col-12').append(
+          `<h2>${data.driverName}</h2>`+
+          `<p>${data.company}</p>`+
+          `<p>tag number: ${data.tagNumber}</p>`+
+          `<p>city: ${data.city}</p>`+
+          `<p>rating: ${data.averageDriverRating}</p>`);
+  
+  for (key in data.descriptionSummary) {
+    $('main .col-12').append(
+          `<p>${key}:</p>`);
+  }
+  console.log(data.descriptionSummary);
+  // $('.slogan').html(data.driverName);
+}
 
 
-function getDriver(driverTagNumber) {
+function getDriver(driverTagNumber, callbackFn) {
   $.ajax({
     url: `/drivers/${driverTagNumber}/tagNumber`,  //http://localhost:8080
     type: 'GET',
@@ -13,7 +27,8 @@ function getDriver(driverTagNumber) {
    success: function(data) {
       if(data) {
         console.log(data);
-        //callbackFn(results);
+
+        callbackFn(data);
       }
   },
    error: function(error) {
@@ -29,7 +44,7 @@ let driverTagNumber;
 $("form").submit(function(event) {
   event.preventDefault();
   let driverTagNumber = $('form').find('#tag-number').val().toUpperCase().replace(/\s+/g, '');
-  getDriver(driverTagNumber);
+  getDriver(driverTagNumber, renderData);
   $('form').find('#tag-number').val("");
   //return false;
 });

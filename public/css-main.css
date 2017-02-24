@@ -1,10 +1,16 @@
-header {
-	background-color: #800080;
-	color: white;
+* {
+	font-family: Roboto;
+}
+
+
+header .logo a {
+	color: #9300D5;
+	background-color: white;
 }
 
 .log-in ul {
 	list-style: none;
+
 }
 
 .log-or-sign li {
@@ -13,9 +19,6 @@ header {
 }
 
 
-/*.col-4.search-box {
-    transform: translateY(100%);
-}*/
 
 ul {
     transform: translateY(25%);
@@ -31,5 +34,40 @@ ul {
 
 a {
 	text-decoration: none;
-	color: black;
+	color: #888888;;
+}
+
+form.search-driver {
+    margin-top: 9%;
+}
+
+section.main {
+    margin-top: 10%;
+}
+
+
+p.slogan {
+    color: #00b9e2;
+    font-size: 3em;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+section.about {
+    margin-top: 29%;
+}
+
+
+.about h2 {
+	font-size: 2em;
+}
+
+.about p {
+	font-size: 1.2em;
+}
+
+.about h2, p {
+    font-weight: normal;
+    color: #787878;
 }

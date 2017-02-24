@@ -33,6 +33,8 @@ router.get('/:tagNumber/tagNumber', (req, res) => {
   
   const tagNumber = req.params.tagNumber;
  
+  //res.redirect('/info');
+
   Driver
     .findOne({tagNumber})
     .exec()
