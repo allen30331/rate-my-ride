@@ -71,3 +71,21 @@ section.about {
     font-weight: normal;
     color: #787878;
 }
+
+
+/*Driver Render Styling*/
+
+.driver {
+	color: #00b9e2;
+    font-size: 2.2em;
+}
+
+.reviews {
+	color: #00b9e2;
+    font-size: 1.8em;
+}
+
+.border {
+    border-bottom: 1px solid #00b9e2;
+    width: 50%;
+}
