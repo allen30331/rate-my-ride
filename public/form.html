@@ -1,0 +1,26 @@
+<form class="add-driver" action="/drivers" method="post">
+	Driver's Name:<input type="text" name="driver-name" id="driver-name" placeholder="enter driver's name" required><br>
+	Company:<select name="companies" form="company-choice">
+				<option value="Uber">Uber</option>
+				<option value="Lyft">Lyft</option>
+			</select><br>
+	Tag Number: <input type="text" name="tag-number" id="tag-number" placeholder="enter driver's tag number" required><br>
+	City: <input type="text" name="city" id="city" placeholder="enter your city" required><br>
+	Rating: <select name="rating" form="rating-choice">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+		    	</select><br>
+	Description: <select name="description" form="description-choice">
+					<option value="Great">Great</option>
+					<option value="Good">Good</option>
+					<option value="Bad">Bad</option>
+					<option value="Nuetral">Nuetral</option>
+					<option value="Creepy">Creepy</option>
+		    	</select><br>
+
+	 Comment: <textarea cols="50" rows="4" name="comment" required=""></textarea>
+	 <button type="submit" class="submit-driver-button">submit</button>
+</form>

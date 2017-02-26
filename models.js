@@ -38,13 +38,16 @@ driverSchema.virtual('descriptionSummary').get(function() {
 
 driverSchema.virtual('averageDriverRating').get(function() {
 
-  let averageRating = 0;
+  let totalRating = 0;
 
   for (var j = 0; j < this.reviews.length; j++) {
-    averageRating += this.reviews[j].driverRating;
+    totalRating += this.reviews[j].driverRating;
   }  
 
-  return averageRating/this.reviews.length;
+  let averageRating = totalRating/this.reviews.length;
+
+
+  return averageRating.toFixed(1);
 });
 
 driverSchema.methods.apiRepr = function() {
