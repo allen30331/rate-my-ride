@@ -65,12 +65,12 @@ router.get('/:id', (req, res) => {
 //Create driver
 router.post('/', (req, res) => {
 
-  const requiredFields = ['driverName', 'company', 'tagNumber', 'city'];
-  requiredFields.forEach(field => {
-    if (!(field in req.body)) {
-      res.status(400).json(
-        {error: `Missing "${field}" in request body`});
-    }});
+  // const requiredFields = ['driverName', 'company', 'tagNumber', 'city'];
+  // requiredFields.forEach(field => {
+  //   if (!(field in req.body)) {
+  //     res.status(400).json(
+  //       {error: `Missing "${field}" in request body`});
+  //   }});
 
   Driver
     .create({

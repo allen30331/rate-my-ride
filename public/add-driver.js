@@ -1,6 +1,7 @@
 
 function replaceAddDriver() {
-  $('.add-driver-container').html('Thanks for adding the driver');
+  $('.add-driver-container').remove();
+  $('.main .col-12 p').html(`Thanks for adding ${driverName}!`);
 }
 
 
@@ -39,18 +40,108 @@ function createDriver(driverName, company, tagNumber, city, driverRating, descri
 });
 }
 
+let driverName;
 
-
-$("form").submit(function(event) {
+$(".add-driver").submit(function(event) {
   event.preventDefault();
-  let driverName = $('form').find('#driver-name').val();
-  let company = $('form').find('#company').val();
-  let tagNumber = $('form').find('#tagNumber').val();
-  let city = $('form').find('#city').val();
-  let stringDriverRating = $('form').find('#driverRating').val();
+  driverName = $('.add-driver').find('#driver-name').val();
+  let company = $('.add-driver').find('#company').val();
+  let tagNumber = $('.add-driver').find('#tagNumber').val();
+  let city = $('.add-driver').find('#city').val();
+  let stringDriverRating = $('.add-driver').find('#driverRating').val();
   let driverRating = parseInt(stringDriverRating);
-  let description = $('form').find('#description').val();
-  let comment = $('form').find('#comment').val();
+  let description = $('.add-driver').find('#description').val();
+  let comment = $('.add-driver').find('#comment').val();
   console.log(driverName, company, tagNumber, city, driverRating, description, comment, "hello");
   createDriver(driverName, company, tagNumber, city, driverRating, description, comment, replaceAddDriver);
 });
+
+
+
+
+/////Handles the search for drivers in nav bar begin////////////
+
+//Gets driver by the drivers tag number
+function getDriver(driverTagNumber, callbackFn) {
+  $.ajax({
+    url: `/drivers/${driverTagNumber}/tagNumber`,  //http://localhost:8080
+    type: 'GET',
+    dataType: 'json',
+
+  success: function(data) {
+    if(data) {
+      console.log(data);
+      callbackFn(data);
+    }
+  },
+
+  error: function(error) {
+    console.log(error);
+    callbackFn(error);  
+    }
+  });
+}
+
+
+let driverTagNumber;
+
+
+
+
+//Renders data from Ajax request
+function renderData(data) {
+  
+  console.log(data.id);
+
+  if (data.status === 500) {
+    $('.about').remove();
+    $('.main .col-12').remove();
+    $('main .row').append(
+          `<div class="col-12 no-driver-found">
+            <p>We don't have that driver yet,<br>
+            but you can add them now!
+            </p>
+            <div class="add-driver-container">
+              <button class="add-driver"><a href="./add-driver">Add Driver</a></button>
+            </div>
+          </div>`);
+  }
+  else {
+  $('.add-driver-container').remove();
+  $('.main .col-12').remove();
+  $('.main .row').append(
+          `<div class="col-12"><h2 class="driver">${data.driverName}</h2>`+
+          `<p>${data.company}</p>`+
+          `<p>tag number: ${data.tagNumber}</p>`+
+          `<p>city: ${data.city}</p>`+
+          `<p>rating: ${data.averageDriverRating}</p>`+
+          `<p class="driver-description">Tags for this driver</p></div>`);
+  
+  for (key in data.descriptionSummary) {
+    $('main .col-12').append(
+          `<p>${key}: ${data.descriptionSummary[key]}</p>`);
+  }
+
+  $('.main .col-12').append(`<p class="reviews">Reviews</p>`)
+
+  data.reviews.forEach(function (review) {
+    $('.main .col-12').append(
+          `<p>rating: ${review.driverRating}</p>`+
+          `<p>description: ${review.description}</p>`+
+          `<p>comment: ${review.comment}</p>`+
+          `<p>created: ${review.created}</p>`+
+          `<div class="border"></div>`);
+  });
+  
+  
+   }
+}
+
+
+$(".search-driver").submit(function(event) {
+  event.preventDefault();
+  driverTagNumber = $('.search-driver').find('#tagNumber').val().toUpperCase().replace(/\s+/g, '');
+  getDriver(driverTagNumber, renderData);
+});
+
+/////Handles the search for drivers in nav bar end////////////
