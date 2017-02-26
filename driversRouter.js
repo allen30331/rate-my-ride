@@ -74,7 +74,7 @@ router.post('/', (req, res) => {
 
   Driver
     .create({
-      driverName: req.body.driverName,
+      driverName: req.body.driverName.toUpperCase(),
       company: req.body.company,
       tagNumber: req.body.tagNumber.toUpperCase().replace(/\s+/g, ''),
       city: req.body.city,

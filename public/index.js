@@ -1,4 +1,4 @@
-//Gets driver by the drivers tag number
+/////Gets driver by the drivers tag number begin/////
 function getDriver(driverTagNumber, callbackFn) {
   $.ajax({
     url: `/drivers/${driverTagNumber}/tagNumber`,  //http://localhost:8080
@@ -18,14 +18,16 @@ function getDriver(driverTagNumber, callbackFn) {
     }
   });
 }
+/////Gets driver by the drivers tag number end/////
 
 
+/////Creates global variable so it can be used in the url of the Ajax request/////
 let driverTagNumber;
 
 
 
 
-//Renders data from Ajax request
+/////Renders data from Ajax request begin/////
 function renderData(data) {
   
   console.log(data.id);
@@ -73,50 +75,16 @@ function renderData(data) {
   
   }
 }
+/////Renders data from Ajax request end/////
 
 
-
-
-
-
+/////Event listener for search driver form begin/////
 $("form").submit(function(event) {
   event.preventDefault();
   driverTagNumber = $('form').find('#tagNumber').val().toUpperCase().replace(/\s+/g, '');
   getDriver(driverTagNumber, renderData);
   $('form').find('#tag-number').val("");
 });
+/////Event listener for search driver form end/////
 
-// $('.main .row').on('click', function() {
-//   $('.main .col-12').remove();
-//   $('.main .row').append(
-//     `<div col-12>
-//       <form class="add-driver" action="/drivers" method="post">
-//         Driver's Name:<input type="text" name="driver-name" id="driver-name" placeholder="enter driver's name" required><br>
-//         Company:<select name="companies" form="company-choice">
-//               <option value="Uber">Uber</option>
-//               <option value="Lyft">Lyft</option>
-//             </select><br>
-//         Tag Number: <input type="text" name="tag-number" id="tag-number" placeholder="enter driver's tag number" required><br>
-//         City: <input type="text" name="city" id="city" placeholder="enter your city" required><br>
-//         Rating: <select name="rating" form="rating-choice">
-//                 <option value="1">1</option>
-//                 <option value="2">2</option>
-//                 <option value="3">3</option>
-//                 <option value="4">4</option>
-//                 <option value="5">5</option>
-//                 </select><br>
-//         Description: <select name="description" form="description-choice">
-//                 <option value="Great">Great</option>
-//                 <option value="Good">Good</option>
-//                 <option value="Bad">Bad</option>
-//                 <option value="Nuetral">Nuetral</option>
-//                 <option value="Creepy">Creepy</option>
-//                 </select><br>
-
-//          Comment: <textarea cols="50" rows="4" name="comment" required=""></textarea>
-//          <button type="submit" class="submit-driver-button">submit</button>
-//       </form>
-//     </div>`
-//     )
-// })
 

@@ -1,10 +1,12 @@
-
-function replaceAddDriver() {
+/////Replaces the Add Driver heading with thank you message begin/////
+function replaceAddDriverHeading() {
   $('.add-driver-container').remove();
   $('.main .col-12 p').html(`Thanks for adding ${driverName}!`);
 }
+/////Replaces the Add Driver heading with thank you message end/////
 
 
+/////Creates Ajax request to create driver begin/////
 function createDriver(driverName, company, tagNumber, city, driverRating, description, comment, callback) {
   $.ajax({
     url: '/drivers',  //http://localhost:8080
@@ -39,9 +41,15 @@ function createDriver(driverName, company, tagNumber, city, driverRating, descri
     }
 });
 }
+/////Creates Ajax request to create driver end/////
 
+
+//Creates global variable to be used in thank you message in 
+//replaceAddDriverHeading function/////
 let driverName;
 
+
+/////Event listener for submit button for add driver form begin/////
 $(".add-driver").submit(function(event) {
   event.preventDefault();
   driverName = $('.add-driver').find('#driver-name').val();
@@ -53,15 +61,16 @@ $(".add-driver").submit(function(event) {
   let description = $('.add-driver').find('#description').val();
   let comment = $('.add-driver').find('#comment').val();
   console.log(driverName, company, tagNumber, city, driverRating, description, comment, "hello");
-  createDriver(driverName, company, tagNumber, city, driverRating, description, comment, replaceAddDriver);
+  createDriver(driverName, company, tagNumber, city, driverRating, description, comment, replaceAddDriverHeading);
 });
+/////Event listener for submit button for add driver form end/////
 
 
 
+/////This section is for the search bar request to get a driver/////
+/////and display their information/////
 
-/////Handles the search for drivers in nav bar begin////////////
-
-//Gets driver by the drivers tag number
+/////Gets driver by the drivers tag number begin/////
 function getDriver(driverTagNumber, callbackFn) {
   $.ajax({
     url: `/drivers/${driverTagNumber}/tagNumber`,  //http://localhost:8080
@@ -81,14 +90,16 @@ function getDriver(driverTagNumber, callbackFn) {
     }
   });
 }
+/////Gets driver by the drivers tag number end/////
 
 
+/////Creates global variable so it can be used in the url of the Ajax request/////
 let driverTagNumber;
 
 
 
 
-//Renders data from Ajax request
+/////Renders data from Ajax request begin/////
 function renderData(data) {
   
   console.log(data.id);
@@ -136,12 +147,13 @@ function renderData(data) {
   
    }
 }
+/////Renders data from Ajax request end/////
 
 
+/////Event listener for search driver form begin/////
 $(".search-driver").submit(function(event) {
   event.preventDefault();
   driverTagNumber = $('.search-driver').find('#tagNumber').val().toUpperCase().replace(/\s+/g, '');
   getDriver(driverTagNumber, renderData);
 });
-
-/////Handles the search for drivers in nav bar end////////////
+/////Event listener for search driver form end/////
