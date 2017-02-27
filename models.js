@@ -1,39 +1,68 @@
 const mongoose = require('mongoose');
+const UserSchema = require('./users/models');
 
-const driverRatingSchema = mongoose.Schema({
+const driverSchema = mongoose.Schema({
   driverName: {type: String, required: true},
   company: {type: String, required: true},
-  tagNumber: {type: Number, required: true},
+  tagNumber: {type: String, required: true},
   city: {type: String, required: true},
-  driverRating: {type: Number, required: true},
-  tags: {type: String},
-  reviews: {
-    rating: {type: Number, required: true},
-    tag: String,
-    review: String 
-  },
-  created: {type: Date, default: Date.now}
+    reviews: [{
+    //userId: { type: UserSchema.Types.ObjectId, ref: 'User' },
+    driverRating: Number,
+    description: String, 
+    comment: String,
+    created: {type: Date, default: Date.now}
+  }]
+  });
+
+driverSchema.set('toObject', {
+  virtuals: true,
+  getters: true
+})
+
+
+driverSchema.set('toJSON', {
+  virtuals: true
+})
+
+
+driverSchema.virtual('descriptionSummary').get(function() {
+  
+  let descriptionSummaryCount = {};
+  for (var i = 0; i < this.reviews.length; i++) {
+    if(!descriptionSummaryCount[this.reviews[i].description]) descriptionSummaryCount[this.reviews[i].description] = 0;
+    descriptionSummaryCount[this.reviews[i].description] += 1;
+  }
+  return descriptionSummaryCount; 
 });
 
+driverSchema.virtual('averageDriverRating').get(function() {
 
-// driverRatingSchema.virtual('authorName').get(function() {
-//   return `${this.author.firstName} ${this.author.lastName}`.trim();
-// });
+  let totalRating = 0;
 
-driverRatingSchema.methods.apiRepr = function() {
+  for (var j = 0; j < this.reviews.length; j++) {
+    totalRating += this.reviews[j].driverRating;
+  }  
+
+  let averageRating = totalRating/this.reviews.length;
+
+
+  return averageRating.toFixed(1);
+});
+
+driverSchema.methods.apiRepr = function() {
   return {
-    id: this._id,
-    driverName: this.driverName,
-    company: this.company,
-    tagNumber: this.tagNumber,
-    city: this.city,
-    driverRating: this.driverRating,
-    tags: this.tags,
-    review: this.review,
-    created: this.created
-  };
+      id: this._id,
+      driverName: this.driverName,
+      company: this.company,
+      tagNumber: this.tagNumber,
+      city: this.city,
+      averageDriverRating: this.averageDriverRating,
+      descriptionSummary: this.descriptionSummary,
+      reviews: this.reviews
+      }
 }
 
-const DriverRating = mongoose.model('DriverRating', driverRatingSchema);
+const Driver = mongoose.model('Driver', driverSchema);
 
-module.exports = {DriverRating};
+module.exports = {Driver};

@@ -1,9 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rate My Ride | Rate Your Uber and Lyft Rides</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css-main.css">
+	<link rel="stylesheet" type="text/css" href="float-grid.css">
 </head>
 <body>
-	<h1>add driver screen</h1>
+
+	<header>
+		<div class="row">
+				<div class="col-4">
+					<h1 class='logo'><a href='./index.html'>rate my ride</a></h1>
+				</div>
+				<div class="col-4">
+					<form class="search-driver" autocomplete="off">
+						<input type="text" name="tagNumber" id="tagNumber" placeholder="enter tag number of driver" required/>
+						<button type='submit' class="search-button">search</button>
+					</form>
+				</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="main">
+			<div class="row">
+				<button class="review-driver-button">Review Driver</button>
+				<div class="review-driver-container">
+					
+					
+				</div>
+				<button type='submit' class="submit-driver-review-button" id="review-form">submit</button>
+				<div class="col-12">
+					<p class="slogan">Add a Driver</p>
+				</div>
+			</div>
+		</section>
+		
+		<section class="add-driver-container">
+			<form class="add-driver" action="/drivers" method="post">
+	Driver's Name:<input type="text" name="driver-name" id="driver-name" placeholder="enter driver's name" required><br>
+	Company:<select name="companies" form="company-choice" id="company">
+				<option value="Uber">Uber</option>
+				<option value="Lyft">Lyft</option>
+			</select><br>
+	Tag Number: <input type="text" class="tag-number" name="tagNumber" id="tagNumber" placeholder="enter driver's tag number" required><br>
+	City: <input type="text" name="city" id="city" placeholder="enter your city" required><br>
+	Rating: <select name="rating" form="rating-choice" id="driverRating">
+					<option value="1">1</option>
+					<option value="2">2</option>
+					<option value="3">3</option>
+					<option value="4">4</option>
+					<option value="5">5</option>
+		    	</select><br>
+	Description: <select name="description" form="description-choice" id="description">
+					<option value="Great">Great</option>
+					<option value="Good">Good</option>
+					<option value="Bad">Bad</option>
+					<option value="Nuetral">Nuetral</option>
+					<option value="Creepy">Creepy</option>
+		    	</select><br>
+
+	 Comment: <textarea cols="50" rows="4" name="comment" id="comment" required></textarea>
+	 <button type="submit" class="submit-driver-button">submit</button>
+</form>
+		</section>	
+		
+	</main>
+
+
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="add-driver.js"></script>
 </body>
 </html>
