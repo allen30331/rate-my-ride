@@ -3,8 +3,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 
+const path = require('path');
+
+const driversRouter = require('./driversRouter');
+const {router: usersRouter} = require('./users');
+
 const {DATABASE_URL, PORT} = require('./config');
-const {BlogPost} = require('./models');
+const {Driver} = require('./models');
 
 const app = express();
 
@@ -14,9 +19,13 @@ app.use(bodyParser.json());
 
 mongoose.Promise = global.Promise;
 
+
+//app.use(express.static(path.join(__dirname, 'public')));
+    
+
 //Static endpoints begin//
 app.get('/add-driver', (req, res) => {
-  res.sendFile(__dirname + '/public/add-driver.html');
+    res.sendFile(__dirname + '/public/add-driver.html');
 });
 
 app.get('/dashboard', (req, res) => {
@@ -36,16 +45,34 @@ app.get('/sign-up', (req, res) => {
 });
 //Static endpoints end//
 
+
+
+app.use('/drivers', driversRouter);
+
+app.use('/users', usersRouter);
+
+app.use('*', function(req, res) {
+  res.status(404).json({message: 'Not Found'});
+});
+
+
 let server;
 
 function runServer() {
-  const port = process.env.PORT || 8080;
   return new Promise((resolve, reject) => {
-    server = app.listen(port, () => {
-      console.log(`Your app is listening on port ${port}`);
-      resolve(server);
-    }).on('error', err => {
-      reject(err)
+    mongoose.connect(DATABASE_URL, err => {
+    	console.log(DATABASE_URL);
+      if (err) {
+        return reject(err);
+      }
+      server = app.listen(PORT, () => {
+        console.log(`Your app is listening on port ${PORT}`);
+        resolve();
+      })
+      .on('error', err => {
+        mongoose.disconnect();
+        reject(err);
+      });
     });
   });
 }

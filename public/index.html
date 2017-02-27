@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rate My Ride | Uber and Lyft Reviews</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css-main.css">
+	<link rel="stylesheet" type="text/css" href="float-grid.css">
 </head>
 <body>
-	<h1>hello world!</h1>
 
-	<div class="test-1">
-		
-	</div>
-	<div class="test-2">
-		
-	</div>
-	<div class="test-3">
-		
-	</div>
+	<header>
+		<div class="row">
+				<div class="col-4">
+					<h1 class='logo'><a href='./index.html'>rate my ride</a></h1>
+				</div>
+				<div class="col-4">
+					<form class="search-driver" autocomplete="off">
+						<input type="text" name="tagNumber" id="tagNumber" placeholder="enter tag number" required/>
+						<button type='submit' class="search-button">search</button>
+					</form>
+				</div>
+		</div>
+	</header>
+
+	<main>
+		<section class="main">
+			<div class="row">
+				<button class="review-driver-button">Review Driver</button>
+				<div class="review-driver-container">
+					
+					
+				</div>
+				<button type='submit' class="submit-driver-review-button" id="review-form">submit</button>
+				<div class="col-12">
+					<p class="slogan">WHO'S DRIVING YOU?</p>
+				</div>
+			</div>
+		</section>
+			
+		<section class= "about">
+			<div class="row">
+				<div class="col-6">
+					<h2>Detailed Uber and Lyft Driver Reviews</h2>
+					<h3>Let’s be honest, the ratings we see for our Uber and Lyft drivers don’t tell us much. With Rate my Ride, you can search a driver by their tag number to see a more detailed review of the person picking you up. Rate my Ride allows you to see comments, ratings and driver descriptions to give you a better idea of you driver.</h3>
+				</div>
+				<div class="col-6">
+					<img src="./images/car-ride.jpg" height="392" width="500px">
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="mock-app.js"></script>
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>
