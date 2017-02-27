@@ -2,6 +2,7 @@
 let driverId;
 let driverName;
 let driverTagNumber;
+let reviewId; 
 
 /////Gets driver bby the drivers tag number/////
 function getDriver(driverTagNumber, callbackFn) {
@@ -12,11 +13,10 @@ function getDriver(driverTagNumber, callbackFn) {
 
   success: function(data) {
     if(data) {
-      console.log(data);
+      console.log(data.reviews, 'hello world');
       driverId = data.id;
       driverName = data.driverName;
       callbackFn(data);
-      //console.log(driverId, 'hello hello hello');
     }
   },
 
@@ -65,6 +65,32 @@ function createReview(driverRating, description, comment, callback) {
 
 
 
+/////Creates Ajax request to delete review begin/////
+function deleteReview(reviewId, callback) {
+  console.log(reviewId);
+  $.ajax({
+    url: `/drivers/${reviewId}/review`, 
+    type: 'DELETE',
+    dataType: 'json',
+    
+
+
+   success: function() {
+      console.log("delete successful");
+      callback();
+  },
+   error: function(error) {
+      let errorString = error.responseText.split(':')[1];
+      let errorStringEdit = errorString.substring(1).slice(0, errorString.length -3)
+      alert(errorStringEdit);
+    }
+});
+}
+/////Creates Ajax request to delete review end/////
+
+
+
+
 
 
 /////Renders data from Ajax request to get driver by tag number begin/////
@@ -110,6 +136,7 @@ function renderData(data) {
           `<p>description: ${review.description}</p>`+
           `<p>comment: ${review.comment}</p>`+
           `<p>created: ${review.created}</p>`+
+          `<button class="delete-button" id="${review._id}">delete</button>`+
           `<div class="border"></div>`);
   });
   
@@ -117,6 +144,28 @@ function renderData(data) {
   }
 }
 /////Renders data from Ajax request to get driver by tag number end/////
+
+
+
+/////Replaces review form with thank you message begin/////
+function replaceReviewForm() {
+  $('.review-driver-button').hide();
+  $('.review-driver-container').hide();
+  $('.submit-driver-review-button').hide();
+  $('.main .row').append(
+      `<div class="col-12">
+        <p class="slogan">Thanks for reviewing ${driverName}!</p>
+      </div>`
+    )
+}
+/////Replaces review form with thank you message end/////
+
+
+/////Replaces review form with thank you message begin/////
+function deleteSuccessful() {
+  alert('delete successful');
+}
+/////Replaces review form with thank you message end/////
 
 
 
@@ -179,19 +228,17 @@ $(".submit-driver-review-button").click(function(event) {
 
 
 
+/////Event listener for delete review button begin//////
+$(".main .row").on('click', '.delete-button', function(event) {
+  console.log(event);
+  reviewId = event.currentTarget.id;
+  deleteReview(reviewId, deleteSuccessful);
+  //alert('hello world');
+});
+/////Event listener for delete review button end//////
 
-/////Replaces review form with thank you message begin/////
-function replaceReviewForm() {
-  $('.review-driver-button').hide();
-  $('.review-driver-container').hide();
-  $('.submit-driver-review-button').hide();
-  $('.main .row').append(
-      `<div class="col-12">
-        <p class="slogan">Thanks for reviewing ${driverName}!</p>
-      </div>`
-    )
-}
-/////Replaces review form with thank you message end/////
+
+
 
 
 
