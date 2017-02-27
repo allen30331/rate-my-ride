@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>Rate My Ride | Uber and Lyft Reviews</title>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css-main.css">
@@ -14,33 +14,41 @@
 	<header>
 		<div class="row">
 				<div class="col-4">
-					<h2><a href='./index.html'>rate my ride</a></h2>
+					<h1 class='logo'><a href='./index.html'>rate my ride</a></h1>
 				</div>
-				<div class="col-4 search-box">
-					<form>
-						<input type="" name="">
-						<button>search</button>
+				<div class="col-4">
+					<form class="search-driver" autocomplete="off">
+						<input type="text" name="tagNumber" id="tagNumber" placeholder="enter tag number of driver" required/>
+						<button type='submit' class="search-button">search</button>
 					</form>
 				</div>
 				<div class="col-4 log-or-sign">
 					<ul>
-						<li><a href="./sign-up.html">sign up</a></li>
-						<li><a href="./log-in.html">log in</a></li>
+						<li><a href="./index.html">log out</a></li>
 					</ul>
 				</div>
 		</div>
 	</header>
 
 	<main>
-		<div class="row">
-			<div class="col-12">
-				<h2>Dashboard</h2>
+		<section class="main">
+			<div class="row">
+				<button class="review-driver-button">Review Driver</button>
+				<div class="review-driver-container">
+					
+					
+				</div>
+				<button type='submit' class="submit-driver-review-button" id="review-form">submit</button>
+				<div class="col-12">
+					<h2 class="your-reviews">Your Reviews</h2>
+				</div>
 			</div>
-		</div>
-	</main>
+		</section>
 
 
+
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="mock-app.js"></script>
+	<script type="text/javascript" src="dashboard.js"></script>
 </body>
 </html>

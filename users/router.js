@@ -159,9 +159,10 @@ router.get('/me',
 router.post('/login',
   passport.authenticate('basic', {session: true}),
   (req, res) => {
-    console.log(req.user, 'hello world');
-    // console.log("req", req);
-    // console.log("res", res);
+    //console.log(req.user, 'hello world');
+    //console.log(req);
+    //console.log("req", req);
+    //console.log("res", res);
     //res.json({user: req.user.apiRepr()});
     res.redirect('/dashboard');
     //res.status(200).json({user: req.user.apiRepr()})
