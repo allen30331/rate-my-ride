@@ -1,8 +1,9 @@
-/////Gets driver by the drivers tag number begin/////
 
 let driverId;
 let driverName;
+let driverTagNumber;
 
+/////Gets driver bby the drivers tag number/////
 function getDriver(driverTagNumber, callbackFn) {
   $.ajax({
     url: `/drivers/${driverTagNumber}/tagNumber`,  //http://localhost:8080
@@ -28,17 +29,47 @@ function getDriver(driverTagNumber, callbackFn) {
 /////Gets driver by the drivers tag number end/////
 
 
-/////Creates global variable so it can be used in the url of the Ajax request/////
-let driverTagNumber;
+
+
+
+/////Creates Ajax request to create review begin/////
+function createReview(driverRating, description, comment, callback) {
+  $.ajax({
+    url: `/drivers/${driverId}/reviews`,  //http://localhost:8080
+    type: 'POST',
+    dataType: 'json',
+    contentType: 'application/json',
+    data: JSON.stringify(
+     {
+        
+        driverRating: driverRating,
+        description: description,
+        comment: comment
+         
+      }
+    ),
+
+  
+   success: function(data) {
+      console.log(data);
+      callback();
+  },
+   error: function(error) {
+      let errorString = error.responseText.split(':')[1];
+      let errorStringEdit = errorString.substring(1).slice(0, errorString.length -3)
+      alert(errorStringEdit);
+    }
+});
+}
+/////Creates Ajax request to create review end/////
 
 
 
 
-/////Renders data from Ajax request begin/////
+
+/////Renders data from Ajax request to get driver by tag number begin/////
 function renderData(data) {
   
-  //console.log(data.id, 'hello world');
-
   if (data.status === 500) {
     $('.about').remove();
     $('.main .col-12').remove();
@@ -83,69 +114,13 @@ function renderData(data) {
   
   }
 }
-/////Renders data from Ajax request end/////
+/////Renders data from Ajax request to get driver by tag number end/////
 
 
-/////Event listener for search driver form begin/////
-$("form").submit(function(event) {
-  event.preventDefault();
-  driverTagNumber = $('form').find('#tagNumber').val().toUpperCase().replace(/\s+/g, '');
-  getDriver(driverTagNumber, renderData);
-  $('form').find('#tagNumber').val("");
-});
-/////Event listener for search driver form end/////
-
-
-
-
-
-/////Creates Ajax request to create review begin/////
-function createReview(driverRating, description, comment, callback) {
-  $.ajax({
-    url: `/drivers/${driverId}/reviews`,  //http://localhost:8080
-    type: 'POST',
-    dataType: 'json',
-    contentType: 'application/json',
-    data: JSON.stringify(
-     {
-        
-        driverRating: driverRating,
-        description: description,
-        comment: comment
-         
-      }
-    ),
-
-  
-   success: function(data) {
-      console.log(data);
-      callback();
-  },
-   error: function(error) {
-      let errorString = error.responseText.split(':')[1];
-      let errorStringEdit = errorString.substring(1).slice(0, errorString.length -3)
-      alert(errorStringEdit);
-    }
-});
-}
-/////Creates Ajax request to create review end/////
-
-
-/////Replaces review form with thank you message begin/////
-function replaceReviewForm() {
-  $('.review-driver-button').remove();
-  $('.review-driver-container').remove();
-  $('.submit-driver-review-button').remove();
-  $('.main .row').append(
-      `<div class="col-12">
-        <p class="slogan">Thanks for reviewing ${driverName}!</p>
-      </div>`
-    )
-}
-/////Replaces review form with thank you message end/////
 
 
 /////Event listener for when review driver button is clicked begin/////
+/////It creates the review form/////
 $(".review-driver-button").click(function(event) {
   event.preventDefault();
   //alert('hello');
@@ -178,6 +153,19 @@ $(".review-driver-button").click(function(event) {
 
 
 
+
+/////Event listener for search driver form begin/////
+$("form").submit(function(event) {
+  event.preventDefault();
+  driverTagNumber = $('form').find('#tagNumber').val().toUpperCase().replace(/\s+/g, '');
+  getDriver(driverTagNumber, renderData);
+  $('form').find('#tagNumber').val("");
+});
+/////Event listener for search driver form end/////
+
+
+
+/////Event listener for submit driver review button begin//////
 $(".submit-driver-review-button").click(function(event) {
   event.preventDefault();
   let driverRating = $('#review-form').find('#driverRating').val();
@@ -185,6 +173,29 @@ $(".submit-driver-review-button").click(function(event) {
   let comment = $('#review-form').find('#comment').val();
   createReview(driverRating, description, comment, replaceReviewForm);
 });
+/////Event listener for submit driver review button end//////
+
+
+
+
+/////Replaces review form with thank you message begin/////
+function replaceReviewForm() {
+  $('.review-driver-button').remove();
+  $('.review-driver-container').remove();
+  $('.submit-driver-review-button').remove();
+  $('.main .row').append(
+      `<div class="col-12">
+        <p class="slogan">Thanks for reviewing ${driverName}!</p>
+      </div>`
+    )
+}
+/////Replaces review form with thank you message end/////
+
+
+
+
+
+
 
 
 
