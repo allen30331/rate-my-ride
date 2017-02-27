@@ -60,7 +60,7 @@ $(".add-driver").submit(function(event) {
   let driverRating = parseInt(stringDriverRating);
   let description = $('.add-driver').find('#description').val();
   let comment = $('.add-driver').find('#comment').val();
-  console.log(driverName, company, tagNumber, city, driverRating, description, comment, "hello");
+  //console.log(driverName, company, tagNumber, city, driverRating, description, comment, "hello");
   createDriver(driverName, company, tagNumber, city, driverRating, description, comment, replaceAddDriverHeading);
 });
 /////Event listener for submit button for add driver form end/////
@@ -155,5 +155,6 @@ $(".search-driver").submit(function(event) {
   event.preventDefault();
   driverTagNumber = $('.search-driver').find('#tagNumber').val().toUpperCase().replace(/\s+/g, '');
   getDriver(driverTagNumber, renderData);
+  $('form').find('#tagNumber').val("");
 });
 /////Event listener for search driver form end/////

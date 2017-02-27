@@ -110,3 +110,22 @@ section.about {
 .add-driver-container {
 	text-align: center;
 }
+/*No Driver Found Styling End*/
+
+
+/*Review driver begin*/
+
+.review-driver-button {
+	display: none;
+}
+
+.review-driver-container {
+	display: none;
+}
+
+.submit-driver-review-button {
+	display: none;
+}
+
+
+/*Review driver end*/
