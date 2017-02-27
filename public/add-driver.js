@@ -1,12 +1,15 @@
-//Creates global variable to be used in thank you message in 
+/////Creates variable so it can be used in the url of the Ajax request/////
+let driverId;
+
+//Creates variable to be used in thank you message in 
 //replaceAddDriverHeading function/////
 let driverName;
 
-/////Creates global variable so it can be used in the url of the Ajax request/////
+/////Creates  variable so it can be used in the url of the Ajax request/////
 let driverTagNumber;
 
-let driverId;
-
+/////Creates variable so it can be used in the url of the Ajax request/////
+let reviewId;  
 
 
 /////Creates Ajax request to create driver begin/////
@@ -107,6 +110,35 @@ function createReview(driverRating, description, comment, callback) {
 
 
 
+/////Creates Ajax request to delete review begin/////
+function deleteReview(reviewId, callback) {
+  console.log(reviewId);
+  $.ajax({
+    url: `/drivers/${reviewId}/review`, 
+    type: 'DELETE',
+    dataType: 'json',
+    
+
+
+   success: function() {
+      console.log("delete successful");
+      callback();
+  },
+   error: function(error) {
+      let errorString = error.responseText.split(':')[1];
+      let errorStringEdit = errorString.substring(1).slice(0, errorString.length -3)
+      alert(errorStringEdit);
+    }
+});
+}
+/////Creates Ajax request to delete review end/////
+
+
+
+
+
+
+
 
 /////Renders data from Ajax request to get driver by tag number begin/////
 function renderData(data) {
@@ -152,6 +184,7 @@ function renderData(data) {
           `<p>description: ${review.description}</p>`+
           `<p>comment: ${review.comment}</p>`+
           `<p>created: ${review.created}</p>`+
+          `<button class="delete-button" id="${review._id}">delete</button>`+
           `<div class="border"></div>`);
   });
   
@@ -269,6 +302,21 @@ $(".submit-driver-review-button").click(function(event) {
   createReview(driverRating, description, comment, replaceReviewForm);
 });
 /////Event listener for submit driver review button end//////
+
+
+/////Event listener for delete review button begin//////
+$(".main .row").on('click', '.delete-button', function(event) {
+  reviewId = event.currentTarget.id;
+  deleteReview(reviewId, deleteSuccessful);
+  $('.main .col-12').hide();
+  $('.review-driver-button').hide();
+  $('.main .row').append(
+    `<div class="col-12">
+      <p class="slogan">Review was deleted</p>
+    </div>`
+    )
+});
+/////Event listener for delete review button end//////
 
 
 

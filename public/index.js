@@ -1,7 +1,14 @@
-
+/////Creates variable so it can be used in the url of the Ajax request/////
 let driverId;
+
+//Creates variable to be used in thank you message in 
+//replaceAddDriverHeading function/////
 let driverName;
+
+/////Creates  variable so it can be used in the url of the Ajax request/////
 let driverTagNumber;
+
+/////Creates variable so it can be used in the url of the Ajax request/////
 let reviewId; 
 
 /////Gets driver bby the drivers tag number/////
@@ -230,10 +237,16 @@ $(".submit-driver-review-button").click(function(event) {
 
 /////Event listener for delete review button begin//////
 $(".main .row").on('click', '.delete-button', function(event) {
-  console.log(event);
+  //console.log(event);
   reviewId = event.currentTarget.id;
   deleteReview(reviewId, deleteSuccessful);
-  //alert('hello world');
+  $('.main .col-12').hide();
+  $('.review-driver-button').hide();
+  $('.main .row').append(
+    `<div class="col-12">
+      <p class="slogan">Review was deleted</p>
+    </div>`
+    )
 });
 /////Event listener for delete review button end//////
 

@@ -55,7 +55,7 @@ p.slogan {
 
 
 section.about {
-    margin-top: 29%;
+    margin-top: 8%;
 }
 
 
@@ -72,6 +72,61 @@ section.about {
     color: #787878;
 }
 
+.about h3 {
+	font-weight: normal;
+    color: #787878;
+}
+
+input#tagNumber {
+    padding: 5px;
+    border-radius: 4px;
+    /*width: 73%;*/
+    border: 2px solid grey;
+}
+
+input .tag-number#tagNumber {
+	width: 30%;
+}
+
+
+button.search-button {
+    height: 28px;
+    border: none;
+    border-radius: 4px;
+    background-color: #9300D5;
+}
+
+.delete-button {
+	margin-bottom: 25px;
+	height: 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00b9e2;
+    color: #555454;
+    transition-duration: 0.4s;
+}
+
+
+.delete-button:hover {
+	background-color: #9300D5;
+	color: white;
+}
+
+
+.review-driver-button {
+	border: none;
+    height: 50px;
+    border-radius: 4px;
+    background-color: #00b9e2;
+    color: #787878;
+    transition-duration: 0.4s;
+}
+
+.review-driver-button:hover {
+	background-color: #9300D5;
+	color: white;
+
+}
 
 /*Driver Render Styling Begin*/
 
