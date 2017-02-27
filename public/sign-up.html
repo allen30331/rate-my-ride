@@ -14,11 +14,11 @@
 	<header>
 		<div class="row">
 				<div class="col-4">
-					<h2><a href='./index.html'>rate my ride</a></h2>
+					<h1 class='logo'><a href='./index.html'>rate my ride</a></h1>
 				</div>
 				<div class="col-4">
-					<form class="search-driver" action="/users" method="post" autocomplete="off">
-						<input type="text" name="tag-number" id="tag-number" placeholder="enter tag number of driver" required/>
+					<form class="search-driver" autocomplete="off">
+						<input type="text" name="tagNumber" id="tagNumber" placeholder="enter tag number of driver" required/>
 						<button type='submit' class="search-button">search</button>
 					</form>
 				</div>
@@ -32,6 +32,36 @@
 	</header>
 
 	<main>
+		<section class="main">
+			<div class="row">
+				<button class="review-driver-button">Review Driver</button>
+				<div class="review-driver-container">
+					
+					
+				</div>
+				<button type='submit' class="submit-driver-review-button" id="review-form">submit</button>
+				<div class="sign-up-box">
+					<form class="register" action="/users" method="post" autocomplete="off">
+						<fieldset name="register-info" class="sign-up-form">
+							<input type="text" name="username" id="username" placeholder="Username" required/>
+							<input type="password" name="password" id="password" placeholder="Password" required/>
+						</fieldset>
+						<button type='submit' class="sign-up-button">Sign Up</button>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+
+
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="sign-up.js"></script>
+</body>
+</html>
+
+	<!-- <main>
 		<div class="row">
 			<div class="col-12">
 			<h2 class='sign-up-title'>Start Rating Now</h2>
@@ -46,7 +76,7 @@
 				</div>
 			</div>
 		</div>
-	</main>
+	</main> -->
 
 
 

@@ -73,6 +73,7 @@ function renderData(data) {
   if (data.status === 500) {
     $('.about').remove();
     $('.main .col-12').remove();
+    $('.review-driver-button').hide();
     $('main .row').append(
           `<div class="col-12 no-driver-found">
             <p>We don't have that driver yet,<br>
@@ -85,6 +86,7 @@ function renderData(data) {
   }
   else {
   $('.about').remove();
+  $('.submit-driver-review-button').hide();
   $('.review-driver-button').show();
   $('.main .col-12').remove();
   $('.main .row').append(
@@ -180,9 +182,9 @@ $(".submit-driver-review-button").click(function(event) {
 
 /////Replaces review form with thank you message begin/////
 function replaceReviewForm() {
-  $('.review-driver-button').remove();
-  $('.review-driver-container').remove();
-  $('.submit-driver-review-button').remove();
+  $('.review-driver-button').hide();
+  $('.review-driver-container').hide();
+  $('.submit-driver-review-button').hide();
   $('.main .row').append(
       `<div class="col-12">
         <p class="slogan">Thanks for reviewing ${driverName}!</p>
