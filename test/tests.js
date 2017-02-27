@@ -158,57 +158,6 @@ describe('GET static pages', function() {
     }); 
   });	
 
-   describe('access dashboard page', function() {
-    it('should return 200 status code and html', function() {
-    let res;
-  return chai.request(app)
-    .get('/dashboard')
-    .then(function(_res) {
-      res = _res;
-      res.should.have.status(200);
-      res.should.be.html;
-    });
-    }); 
-  });
-
-   describe('access log in page', function() {
-    it('should return 200 status code and html', function() {
-    let res;
-  return chai.request(app)
-    .get('/log-in')
-    .then(function(_res) {
-      res = _res;
-      res.should.have.status(200);
-      res.should.be.html;
-    });
-    }); 
-  });
-
-   describe('access rate driver page', function() {
-    it('should return 200 status code and html', function() {
-    let res;
-  return chai.request(app)
-    .get('/rate-driver')
-    .then(function(_res) {
-      res = _res;
-      res.should.have.status(200);
-      res.should.be.html;
-    });
-    }); 
-  });
-
-    describe('access sign up page', function() {
-    it('should return 200 status code and html', function() {
-    let res;
-  return chai.request(app)
-    .get('/sign-up')
-    .then(function(_res) {
-      res = _res;
-      res.should.have.status(200);
-      res.should.be.html;
-    });
-    }); 
-  });
 });
 //Test static endpoints end
 
