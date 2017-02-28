@@ -111,7 +111,7 @@ function createReview(driverRating, description, comment, callback) {
 
 
 /////Creates Ajax request to delete review begin/////
-function deleteReview(reviewId, callback) {
+function deleteReview(reviewId) {
   console.log(reviewId);
   $.ajax({
     url: `/drivers/${reviewId}/review`, 
@@ -121,8 +121,8 @@ function deleteReview(reviewId, callback) {
 
 
    success: function() {
-      console.log("delete successful");
-      callback();
+      
+      
   },
    error: function(error) {
       let errorString = error.responseText.split(':')[1];
@@ -192,6 +192,7 @@ function renderData(data) {
    }
 }
 /////Renders data from Ajax request to get driver by tag number end/////
+
 
 
 
@@ -307,7 +308,7 @@ $(".submit-driver-review-button").click(function(event) {
 /////Event listener for delete review button begin//////
 $(".main .row").on('click', '.delete-button', function(event) {
   reviewId = event.currentTarget.id;
-  deleteReview(reviewId, deleteSuccessful);
+  deleteReview(reviewId);
   $('.main .col-12').hide();
   $('.review-driver-button').hide();
   $('.main .row').append(
