@@ -11,6 +11,8 @@ let driverTagNumber;
 /////Creates variable so it can be used in the url of the Ajax request/////
 let reviewId; 
 
+let demoTagNumber;
+
 /////Gets driver bby the drivers tag number/////
 function getDriver(driverTagNumber, callbackFn) {
   $.ajax({
@@ -34,7 +36,29 @@ function getDriver(driverTagNumber, callbackFn) {
 }
 /////Gets driver by the drivers tag number end/////
 
+/////Gets demo driver by the drivers tag number/////
+function getDemoDriver(demoTagNumber, callbackFn) {
+  console.log(demoTagNumber);
+  $.ajax({
+    url: `/drivers/${demoTagNumber}/tagNumber`,  //http://localhost:8080
+    type: 'GET',
+    dataType: 'json',
 
+  success: function(data) {
+    if(data) {
+      driverId = data.id;
+      driverName = data.driverName;
+      callbackFn(data);
+    }
+  },
+
+  error: function(error) {
+    console.log(error);
+    callbackFn(error);  
+    }
+  });
+}
+/////Gets demo driver by the drivers tag number end/////
 
 
 
@@ -211,6 +235,15 @@ $("form").submit(function(event) {
 });
 /////Event listener for search driver form end/////
 
+
+/////Event listener for demo driver form begin/////
+$(".demo").click(function(event) {
+  console.log(event);
+  event.preventDefault();
+  demoTagNumber = 'ABC123';
+  getDemoDriver(demoTagNumber, renderData);
+});
+/////Event listener for demo driver form end/////
 
 
 /////Event listener for submit driver review button begin//////

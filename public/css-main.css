@@ -8,9 +8,14 @@ header .logo a {
 	background-color: white;
 }
 
-.log-in ul {
-	list-style: none;
+p.demo {
+    text-align: center;
+    margin-top: 34px;
+   
+}
 
+a.demo-link {
+ color: #9300D5;;
 }
 
 .log-or-sign li {
@@ -57,9 +62,14 @@ p.slogan {
     font-weight: bold;
 }
 
+.sub-slogan {
+    text-align: center;
+    font-size: 1.4em;
+}
+
 
 section.about {
-    margin-top: 8%;
+    margin-top: 15%;
 }
 
 
