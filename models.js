@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const UserSchema = require('./users/models');
 
 const driverSchema = mongoose.Schema({
   driverName: {type: String, required: true},
@@ -7,7 +6,6 @@ const driverSchema = mongoose.Schema({
   tagNumber: {type: String, required: true},
   city: {type: String, required: true},
     reviews: [{
-    //userId: { type: UserSchema.Types.ObjectId, ref: 'User' },
     driverRating: Number,
     description: String, 
     comment: String,

@@ -6,7 +6,6 @@ const morgan = require('morgan');
 const path = require('path');
 
 const driversRouter = require('./driversRouter');
-const {router: usersRouter} = require('./users');
 
 const {DATABASE_URL, PORT} = require('./config');
 const {Driver} = require('./models');
@@ -49,7 +48,6 @@ app.get('/sign-up', (req, res) => {
 
 app.use('/drivers', driversRouter);
 
-app.use('/users', usersRouter);
 
 app.use('*', function(req, res) {
   res.status(404).json({message: 'Not Found'});
