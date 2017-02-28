@@ -2,6 +2,10 @@
 	font-family: Roboto;
 }
 
+button:hover {
+    cursor: pointer; 
+    cursor: hand;
+}
 
 header .logo a {
 	color: #9300D5;

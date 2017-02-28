@@ -125,7 +125,7 @@ function deleteReview(reviewId, callback) {
 function renderData(data) {
   
   if (data.status === 500) {
-    $('submit-driver-review-button').hide();
+    $('.submit-driver-review-button').hide();
     $('.about').remove();
     $('.main .col-12').remove();
     $('.review-driver-button').hide();
