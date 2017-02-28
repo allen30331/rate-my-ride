@@ -105,13 +105,13 @@ describe('GET static pages', function() {
     return runServer();
   });
 
-  beforeEach(function() {
-    return seedDriverData();
-  });
+  // beforeEach(function() {
+  //   return seedDriverData();
+  // });
 
-  afterEach(function() {
-    return tearDownDb();
-  });
+  // afterEach(function() {
+  //   return tearDownDb();
+  // });
 
   after(function() {
     return closeServer();
