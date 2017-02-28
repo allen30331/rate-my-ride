@@ -105,13 +105,13 @@ describe('GET static pages', function() {
     return runServer();
   });
 
-  // beforeEach(function() {
-  //   return seedDriverData();
-  // });
+  beforeEach(function() {
+    return seedDriverData();
+  });
 
-  // afterEach(function() {
-  //   return tearDownDb();
-  // });
+  afterEach(function() {
+    return tearDownDb();
+  });
 
   after(function() {
     return closeServer();
@@ -119,17 +119,6 @@ describe('GET static pages', function() {
 
 
 
-
-
-
-
-  // before(function() {
-  //   return runServer();
-  // });
-
-  // after(function() {
-  //   return closeServer();
-  // })
 
 
   describe('access root folder', function() {
