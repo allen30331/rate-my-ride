@@ -32,7 +32,7 @@ function generateDriverCompany() {
 }
 
 function generateDriverTagNumber() {
-  let type = ['ABC123', 'DEF456', 'AZA143', 'BHS735'];
+  let type = ['thinkful1', 'thinkful2', 'thinkful3', 'thinkful14'];
   return type[Math.floor(Math.random() * type.length)];
 }
 

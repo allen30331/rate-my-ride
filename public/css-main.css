@@ -41,6 +41,10 @@ form.search-driver {
     margin-top: 9%;
 }
 
+form.add-driver {
+    margin-bottom: 25px;
+}
+
 section.main {
     margin-top: 10%;
 }
@@ -93,7 +97,16 @@ button.search-button {
     height: 28px;
     border: none;
     border-radius: 4px;
+    background-color: #00b9e2;
+    transition-duration: 0.4s;
+}
+
+
+
+button.search-button:hover {
     background-color: #9300D5;
+    color: white;
+
 }
 
 .delete-button {
@@ -104,6 +117,8 @@ button.search-button {
     background-color: #00b9e2;
     color: #555454;
     transition-duration: 0.4s;
+    height: 35px;
+    width: 60px;
 }
 
 
@@ -128,6 +143,25 @@ button.search-button {
 
 }
 
+
+button#review-form {
+    border: none;
+    height: 50px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: #00b9e2;
+    color: #787878;
+    transition-duration: 0.4s;
+}
+
+button#review-form:hover {
+    background-color: #9300D5;
+    color: white;
+}
+
+
+
+
 /*Driver Render Styling Begin*/
 
 .driver {
@@ -148,6 +182,12 @@ button.search-button {
 .border {
     border-bottom: 1px solid #00b9e2;
     width: 50%;
+}
+
+
+img {
+    border-style: none;
+    border-radius: 69%;
 }
 
 /*Driver Render Styling End*/
@@ -184,3 +224,85 @@ button.search-button {
 
 
 /*Review driver end*/
+
+
+
+
+
+/*Add driver Form begin*/
+input#driver-name {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+}
+
+select#company {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+}
+
+
+input#city {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+}
+
+select#driverRating {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+}
+
+
+select#description {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+}
+
+textarea#comment {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+}
+
+button.submit-driver-button {
+    border: none;
+    height: 50px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: #00b9e2;
+    color: #787878;
+    transition-duration: 0.4s;
+}
+}
+
+button.submit-driver-button:hover {
+    background-color: #9300D5;
+    color: white;
+}
+
+/*Add driver Form end*/
+
+
+
+/*Media Query*/
+
+@media only screen and (max-width: 550px) {
+
+img {
+    margin-left: 13px;
+    height: 392px;
+    width:  450px;
+}
+
+input#tagNumber {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+    margin-left: 25%;
+}
+
+}
