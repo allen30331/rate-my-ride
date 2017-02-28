@@ -37,7 +37,6 @@ function createDriver(driverName, company, tagNumber, city, driverRating, descri
 
   
    success: function(data) {
-      console.log(data);
       callback();
   },
    error: function(error) {
@@ -60,7 +59,6 @@ function getDriver(driverTagNumber, callbackFn) {
 
   success: function(data) {
     if(data) {
-      console.log(data);
       driverId = data.id;
       driverName = data.driverName;
       callbackFn(data);
@@ -96,7 +94,6 @@ function createReview(driverRating, description, comment, callback) {
 
   
    success: function(data) {
-      console.log(data);
       callback();
   },
    error: function(error) {
@@ -112,7 +109,6 @@ function createReview(driverRating, description, comment, callback) {
 
 /////Creates Ajax request to delete review begin/////
 function deleteReview(reviewId) {
-  console.log(reviewId);
   $.ajax({
     url: `/drivers/${reviewId}/review`, 
     type: 'DELETE',
@@ -142,10 +138,9 @@ function deleteReview(reviewId) {
 
 /////Renders data from Ajax request to get driver by tag number begin/////
 function renderData(data) {
-  
-  console.log(data.id);
-
   if (data.status === 500) {
+    $('.review-driver-button').hide();
+    $('.add-driver-container').hide();
     $('.about').remove();
     $('.main .col-12').remove();
     $('main .row').append(
@@ -249,7 +244,6 @@ $(".add-driver").submit(function(event) {
   let driverRating = parseInt(stringDriverRating);
   let description = $('.add-driver').find('#description').val();
   let comment = $('.add-driver').find('#comment').val();
-  //console.log(driverName, company, tagNumber, city, driverRating, description, comment, "hello");
   createDriver(driverName, company, tagNumber, city, driverRating, description, comment, replaceAddDriverHeading);
 });
 /////Event listener for submit button for add driver form end/////
@@ -262,7 +256,6 @@ $(".add-driver").submit(function(event) {
 /////It creates the review form/////
 $(".review-driver-button").click(function(event) {
   event.preventDefault();
-  //alert('hello');
   $('.main .col-12').remove();
   $('.review-driver-container').show();
   $('.review-driver-container').append(
