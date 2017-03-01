@@ -372,29 +372,10 @@ button.submit-driver-button:hover {
 
 
 
-/*Media Query*/
-
-/*@media only screen and (max-width: 550px) {
-
-img {
-    margin-left: 13px;
-    height: 392px;
-    width:  450px;
-}
-
-input#tagNumber {
-    padding: 5px;
-    border-radius: 4px;
-    border: 2px solid grey;
-    margin-left: 25%;
-}
-
-}*/
 
 
 
-
-@media only screen and (max-width: 640px) {
+/*@media only screen and (max-width: 640px) {
 p.demo {
     margin-top: 34px;
     display: inline-block;
@@ -404,4 +385,4 @@ p.demo {
 }
 
 
-}
+}*/
