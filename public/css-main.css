@@ -15,11 +15,13 @@ header .logo a {
 p.demo {
     text-align: center;
     margin-top: 34px;
-   
+    display: inline-block;
+    position: relative;
+    left: 33%;
 }
 
 a.demo-link {
- color: #9300D5;;
+ color: #9300D5;
 }
 
 .log-or-sign li {
@@ -27,7 +29,9 @@ a.demo-link {
 	margin: 0 0 30px 30px;
 }
 
-
+.car-ride {
+    width: 100%;
+}
 
 ul {
     transform: translateY(25%);
@@ -43,7 +47,7 @@ ul {
 
 a {
 	text-decoration: none;
-	color: #888888;
+	color: white;
 }
 
 form.search-driver {
@@ -113,6 +117,7 @@ button.search-button {
     border-radius: 4px;
     background-color: #00b9e2;
     transition-duration: 0.4s;
+    color: white;
 }
 
 
@@ -123,13 +128,34 @@ button.search-button:hover {
 
 }
 
+button.add-driver {
+    height: 28px;
+    border: none;
+    border-radius: 4px;
+    background-color: #9300D5;
+    transition-duration: 0.4s;
+    color: white;
+}
+
+
+
+button.add-driver:hover {
+    background-color: #00b9e2;;
+    color: white;
+
+}
+
+
+
+
+
 .delete-button {
 	margin-bottom: 25px;
 	height: 20px;
     border: none;
     border-radius: 4px;
     background-color: #00b9e2;
-    color: #555454;
+    color: white;
     transition-duration: 0.4s;
     height: 35px;
     width: 60px;
@@ -147,7 +173,7 @@ button.search-button:hover {
     height: 50px;
     border-radius: 4px;
     background-color: #00b9e2;
-    color: #787878;
+    color: white;
     transition-duration: 0.4s;
 }
 
@@ -288,7 +314,7 @@ button.submit-driver-button {
     width: 100px;
     border-radius: 4px;
     background-color: #00b9e2;
-    color: #787878;
+    color: white;
     transition-duration: 0.4s;
 }
 }
@@ -304,7 +330,7 @@ button.submit-driver-button:hover {
 
 /*Media Query*/
 
-@media only screen and (max-width: 550px) {
+/*@media only screen and (max-width: 550px) {
 
 img {
     margin-left: 13px;
@@ -318,5 +344,20 @@ input#tagNumber {
     border: 2px solid grey;
     margin-left: 25%;
 }
+
+}*/
+
+
+
+
+@media only screen and (max-width: 640px) {
+p.demo {
+    margin-top: 34px;
+    display: inline-block;
+    position: relative;
+    left: 0%;
+    margin-top: 13%;
+}
+
 
 }

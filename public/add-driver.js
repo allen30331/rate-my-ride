@@ -149,7 +149,7 @@ function renderData(data) {
             but you can add them now!
             </p>
             <div class="add-driver-container">
-              <button class="add-driver"><a href="./add-driver">Add Driver</a></button>
+              <button class="add-driver"><a href="./add-driver" class="add-driver-link">Add Driver</a></button>
             </div>
           </div>`);
   }
@@ -261,14 +261,14 @@ $(".review-driver-button").click(function(event) {
   $('.review-driver-container').append(
       `<div class="col-12">
           <form class="review-driver" action="/drivers/id/reviews" method="post" id="review-form">
-            <p>Rating:</p> <select name="rating" form="rating-choice" id="driverRating">
+            <p>Rating</p> <select name="rating" form="rating-choice" id="driverRating">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">4</option>
                     <option value="5">5</option>
                     </select><br>
-            <p>Description:</p> <select name="description" form="description-choice" id="description">
+            <p>Description</p> <select name="description" form="description-choice" id="description">
                     <option value="Great">Great</option>
                     <option value="Good">Good</option>
                     <option value="Bad">Bad</option>
@@ -276,7 +276,7 @@ $(".review-driver-button").click(function(event) {
                     <option value="Creepy">Creepy</option>
                     </select><br>
 
-             <p>Comment:</p> <textarea cols="50" rows="4" name="comment" id="comment" required></textarea><br>
+             <p>Comment</p> <textarea cols="50" rows="4" name="comment" id="comment" required></textarea><br>
           </form>
       </div>`);
   $('.submit-driver-review-button').show();
