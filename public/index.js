@@ -8,6 +8,7 @@ let driverName;
 /////Creates  variable so it can be used in the url of the Ajax request/////
 let driverTagNumber;
 
+
 /////Creates variable so it can be used in the url of the Ajax request/////
 let reviewId; 
 
@@ -35,6 +36,7 @@ function getDriver(driverTagNumber, callbackFn) {
   });
 }
 /////Gets driver by the drivers tag number end/////
+
 
 /////Gets demo driver by the drivers tag number/////
 function getDemoDriver(demoTagNumber, callbackFn) {
@@ -195,7 +197,6 @@ function replaceReviewForm() {
 /////It creates the review form/////
 $(".review-driver-button").click(function(event) {
   event.preventDefault();
-  //alert('hello');
   $('.main .col-12').remove();
   $('.review-driver-container').show();
   $('.review-driver-container').append(
@@ -236,6 +237,25 @@ $("form").submit(function(event) {
 /////Event listener for search driver form end/////
 
 
+
+
+/////Event listener for search driver form middle of page begin/////
+$(".search-driver-middle").submit(function(event) {
+  event.preventDefault();
+  driverTagNumber = $(".search-driver-middle").find('#tagNumberMiddle').val().toUpperCase().replace(/\s+/g, '');
+  console.log(driverTagNumber, "hello");
+  getDriver(driverTagNumber, renderData);
+  $('.search-driver').show();
+  $('.demo').show();
+});
+/////Event listener for search driver form middle of page end/////
+
+
+
+
+
+
+
 /////Event listener for demo driver form begin/////
 $(".demo").click(function(event) {
   console.log(event);
@@ -244,6 +264,22 @@ $(".demo").click(function(event) {
   getDemoDriver(demoTagNumber, renderData);
 });
 /////Event listener for demo driver form end/////
+
+
+
+
+/////Event listener for demo driver form  middle begin/////
+$(".demo-middle").click(function(event) {
+  console.log(event);
+  event.preventDefault();
+  demoTagNumber = 'ABC123';
+  getDemoDriver(demoTagNumber, renderData);
+  $('.search-driver').show();
+  $('.demo').show();
+});
+/////Event listener for demo driver form middle end/////
+
+
 
 
 /////Event listener for submit driver review button begin//////

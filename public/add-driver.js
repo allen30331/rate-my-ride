@@ -313,7 +313,10 @@ $(".main .row").on('click', '.delete-button', function(event) {
 /////Event listener for delete review button end//////
 
 
-
+(function showSearchBox() {
+  $('.search-driver').show();
+  $('.demo').show();
+})();
 
 
 
