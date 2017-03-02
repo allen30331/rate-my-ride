@@ -55,6 +55,14 @@ input#tagNumberMiddle {
 }
 
 
+textarea#comment {
+    padding: 5px;
+    border-radius: 4px;
+    border: 2px solid grey;
+    width: 30%;
+}
+
+
 
 form.search-driver-middle {
     text-align: center;

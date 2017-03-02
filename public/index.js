@@ -125,6 +125,16 @@ function deleteReview(reviewId, callback) {
 
 /////Renders data from Ajax request to get driver by tag number begin/////
 function renderData(data) {
+
+
+
+  let now = new Date();
+  
+  let day = now.getDate();
+
+  let month = now.getMonth();
+
+  let year = now.getFullYear();
   
   if (data.status === 500) {
     $('.submit-driver-review-button').hide();
@@ -166,8 +176,8 @@ function renderData(data) {
           `<p>rating: ${review.driverRating}</p>`+
           `<p>description: ${review.description}</p>`+
           `<p>comment: ${review.comment}</p>`+
-          `<p>created: ${review.created}</p>`+
-          `<button class="delete-button" id="${review._id}">delete</button>`+
+          `<p>created: ${month}/${day}/${year}</p>`+
+          // `<button class="delete-button" id="${review._id}">delete</button>`+
           `<div class="border"></div>`);
   });
   
