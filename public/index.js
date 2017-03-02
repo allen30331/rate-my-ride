@@ -157,7 +157,6 @@ function renderData(data) {
   $('.review-driver-button').show();
   $('.main .col-12').remove();
   $('.main .row').append(
-          `<p>All reviews are anonymous</p>`+
           `<div class="col-12"><h2 class="driver">${data.driverName}</h2>`+
           `<p>${data.company}</p>`+
           `<p>tag number: ${data.tagNumber}</p>`+
