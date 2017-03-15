@@ -286,6 +286,8 @@ $(".demo-middle").click(function(event) {
   getDemoDriver(demoTagNumber, renderData);
   $('.search-driver').show();
   $('.demo').show();
+  
+
 });
 /////Event listener for demo driver form middle end/////
 
