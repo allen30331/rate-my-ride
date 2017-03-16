@@ -264,7 +264,14 @@ button#review-form:hover {
     color: white;
 }
 
+footer  {
+    background-color: #00B9E2;
+    margin-top: 20px;
+}
 
+footer p {
+    color: white;
+}
 
 
 /*Driver Render Styling Begin*/
