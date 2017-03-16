@@ -154,12 +154,12 @@ function renderData(data) {
           </div>`);
   }
   else {
-  $('.submit-driver-review-button').hide();
-  $('.review-driver-button').show();  
+  $('.submit-driver-review-button').hide(); 
   $('.add-driver-container').remove();
   $('.main .col-12').remove();
   $('.main .row').append(
           `<div class="col-12"><h2 class="driver">${data.driverName}</h2>`+
+          `<button class="review-driver-button">Review Driver</button>`+
           `<p>${data.company}</p>`+
           `<p>tag number: ${data.tagNumber}</p>`+
           `<p>city: ${data.city}</p>`+
@@ -254,7 +254,7 @@ $(".add-driver").submit(function(event) {
 
 /////Event listener for when review driver button is clicked begin/////
 /////It creates the review form/////
-$(".review-driver-button").click(function(event) {
+$(".main .row").on('click', '.review-driver-button', function(event) {
   event.preventDefault();
   $('.main .col-12').remove();
   $('.review-driver-container').show();
