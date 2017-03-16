@@ -266,7 +266,7 @@ button#review-form:hover {
 
 footer  {
     background-color: #00B9E2;
-    margin-top: 20px;
+    margin-top: 60px;
 }
 
 footer p {
@@ -294,6 +294,10 @@ footer p {
 .border {
     border-bottom: 1px solid #00b9e2;
     width: 50%;
+}
+
+.border:last-child {
+  display: none;
 }
 
 
