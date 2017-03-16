@@ -209,7 +209,7 @@ function replaceReviewForm() {
   $('.submit-driver-review-button').hide();
   $('.main .row').append(
       `<div class="col-12">
-        <p class="slogan">Thanks for reviewing ${driverName}!</p>
+        <p class="slogan thanks">Thanks for reviewing ${driverName}!</p>
       </div>`
     )
 }

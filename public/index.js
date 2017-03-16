@@ -154,10 +154,10 @@ function renderData(data) {
   else {
   $('.about').remove();
   $('.submit-driver-review-button').hide();
-  $('.review-driver-button').show();
   $('.main .col-12').remove();
   $('.main .row').append(
           `<div class="col-12"><h2 class="driver">${data.driverName}</h2>`+
+          `<button class="review-driver-button">Review Driver</button>`+
           `<p>${data.company}</p>`+
           `<p>tag number: ${data.tagNumber}</p>`+
           `<p>city: ${data.city}</p>`+
@@ -195,7 +195,7 @@ function replaceReviewForm() {
   $('.submit-driver-review-button').hide();
   $('.main .row').append(
       `<div class="col-12">
-        <p class="slogan">Thanks for reviewing ${driverName}!</p>
+        <p class="slogan thanks">Thanks for reviewing ${driverName}!</p>
       </div>`
     )
 }
@@ -205,7 +205,7 @@ function replaceReviewForm() {
 
 /////Event listener for when review driver button is clicked begin/////
 /////It creates the review form/////
-$(".review-driver-button").click(function(event) {
+$(".main .row").on('click', '.review-driver-button', function(event) {
   event.preventDefault();
   $('.main .col-12').remove();
   $('.review-driver-container').show();

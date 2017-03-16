@@ -124,6 +124,9 @@ section.main {
     margin-top: 10%;
 }
 
+p.slogan.thanks {
+    margin-bottom: 35%;
+}
 
 p.slogan {
     color: #00b9e2;
@@ -329,9 +332,9 @@ img {
 
 /*Review driver begin*/
 
-.review-driver-button {
+/*.review-driver-button {
 	display: none;
-}
+}*/
 
 .review-driver-container {
 	display: none;
