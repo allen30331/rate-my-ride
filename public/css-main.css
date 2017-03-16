@@ -24,8 +24,8 @@ p.demo {
 }
 
 a.demo-link {
- color: #9300D5;
-
+ color: #00b9e2;
+ font-weight: bold;
 }
 
 
@@ -80,8 +80,9 @@ form.search-driver-middle {
 .demo-middle {
     text-align: center;
     margin-right: 25px;
-    margin-top: 75px;
+    margin-top: 10px;
     font-size: 18px;
+    margin-bottom: 100px
 }
 
 
