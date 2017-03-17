@@ -231,6 +231,7 @@ $(".main .row").on('click', '.review-driver-button', function(event) {
           </form>
       </div>`);
   $('.submit-driver-review-button').show();
+  $('.cancel-button').show();
 });
 /////Event listener for when review driver button is clicked end/////
 
@@ -301,6 +302,7 @@ $(".submit-driver-review-button").click(function(event) {
   let description = $('#review-form').find('#description').val();
   let comment = $('#review-form').find('#comment').val();
   createReview(driverRating, description, comment, replaceReviewForm);
+  $('.cancel-button').hide();
 });
 /////Event listener for submit driver review button end//////
 

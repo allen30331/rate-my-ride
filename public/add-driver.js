@@ -195,7 +195,9 @@ function renderData(data) {
 /////Replaces the Add Driver heading with thank you message begin/////
 function replaceAddDriverHeading() {
   $('.add-driver-container').remove();
-  $('.main .col-12 p').html(`Thanks for adding ${driverName}!`);
+  $('p.slogan.add-a-driver').hide();
+  $('p.slogan.thanks-for-adding').show();
+  $('p.slogan.thanks-for-adding').html(`Thanks for adding ${driverName}`);
 }
 /////Replaces the Add Driver heading with thank you message end/////
 
@@ -278,8 +280,11 @@ $(".main .row").on('click', '.review-driver-button', function(event) {
 
              <p>Comment</p> <textarea cols="50" rows="4" name="comment" id="comment" required></textarea><br>
           </form>
+          <button type='submit' class="submit-driver-review-button" id="review-form">submit</button>
+          <button class="cancel-button"><a href="index.html">cancel</a></button>
       </div>`);
   $('.submit-driver-review-button').show();
+  $('.cancel-button').show();
 });
 /////Event listener for when review driver button is clicked end/////
 
@@ -288,7 +293,7 @@ $(".main .row").on('click', '.review-driver-button', function(event) {
 
 
 /////Event listener for submit driver review button begin//////
-$(".submit-driver-review-button").click(function(event) {
+$(".review-driver-container").on('click', ".submit-driver-review-button" , function(event) {
   event.preventDefault();
   let driverRating = $('#review-form').find('#driverRating').val();
   let description = $('#review-form').find('#description').val();
@@ -316,6 +321,10 @@ $(".main .row").on('click', '.delete-button', function(event) {
 (function showSearchBox() {
   $('.search-driver').show();
   $('.demo').show();
+})();
+
+(function showCancelButton() {
+  $('.cancel-button').show();
 })();
 
 

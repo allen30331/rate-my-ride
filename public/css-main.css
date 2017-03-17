@@ -126,6 +126,12 @@ section.main {
 
 p.slogan.thanks {
     margin-bottom: 35%;
+
+}
+
+p.slogan.thanks-for-adding {
+    margin-bottom: 35%;
+    display: none;
 }
 
 p.slogan {
@@ -136,6 +142,8 @@ p.slogan {
     margin-bottom: 0px;
     margin-top: -75px;
 }
+
+
 
 .sub-slogan {
     text-align: center;
@@ -279,6 +287,16 @@ footer p {
     color: white;
 }
 
+p.built-by {
+    display: inline-block;
+}
+
+img.github {
+    height: 22px;
+    width: 22px;
+    position: relative;
+    top: 5px;
+}
 
 /*Driver Render Styling Begin*/
 
@@ -344,7 +362,9 @@ img {
 	display: none;
 }
 
-
+.cancel-button {
+    display: none;
+}
 /*Review driver end*/
 
 
@@ -408,6 +428,28 @@ button.submit-driver-button:hover {
     color: white;
 }
 
+
+button.cancel-button {
+    border: none;
+    height: 50px;
+    width: 100px;
+    border-radius: 4px;
+    background-color: #00b9e2;
+    color: white;
+    transition-duration: 0.4s;
+}
+
+
+button.cancel-button:hover {
+    background-color: #9300D5;
+    color: white;
+}
+
+
+
+
+
+
 /*Add driver Form end*/
 
 
@@ -470,4 +512,18 @@ button.submit-driver-button:hover {
     margin-top: 44px;
    
     }
+}
+
+
+
+
+
+
+@media only screen and (max-width: 639px) {
+
+    form.search-driver {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    }
+  
 }
