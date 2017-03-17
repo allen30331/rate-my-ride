@@ -263,38 +263,6 @@ $(".search-driver-middle").submit(function(event) {
 
 
 
-
-
-
-
-/////Event listener for demo driver form begin/////
-$(".demo").click(function(event) {
-  console.log(event);
-  event.preventDefault();
-  demoTagNumber = 'ABC123';
-  getDemoDriver(demoTagNumber, renderData);
-});
-/////Event listener for demo driver form end/////
-
-
-
-
-/////Event listener for demo driver form  middle begin/////
-// $(".demo-middle").click(function(event) {
-//   console.log(event);
-//   event.preventDefault();
-//   demoTagNumber = 'ABC123';
-//   getDemoDriver(demoTagNumber, renderData);
-//   $('.search-driver').show();
-//   $('.demo').show();
-  
-
-// });
-/////Event listener for demo driver form middle end/////
-
-
-
-
 /////Event listener for submit driver review button begin//////
 $(".submit-driver-review-button").click(function(event) {
   event.preventDefault();
@@ -325,12 +293,13 @@ $(".main .row").on('click', '.delete-button', function(event) {
 
 
 
-
-
-
-
-
-
-
-
+///Event listener for demo driver form  middle begin/////
+(function(event) {
+  console.log(event);
+  demoTagNumber = 'ABC123';
+  getDemoDriver(demoTagNumber, renderData);
+  $('.search-driver').show();
+  $('.demo').show();
+})();
+///Event listener for demo driver form middle end/////
 
