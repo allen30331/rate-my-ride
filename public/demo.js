@@ -97,30 +97,6 @@ function createReview(driverRating, description, comment, callback) {
 
 
 
-/////Creates Ajax request to delete review begin/////
-function deleteReview(reviewId, callback) {
-  $.ajax({
-    url: `/drivers/${reviewId}/review`, 
-    type: 'DELETE',
-    dataType: 'json',
-    
-
-
-   success: function() {
-  
-  },
-   error: function(error) {
-      let errorString = error.responseText.split(':')[1];
-      let errorStringEdit = errorString.substring(1).slice(0, errorString.length -3)
-      alert(errorStringEdit);
-    }
-});
-}
-/////Creates Ajax request to delete review end/////
-
-
-
-
 
 
 /////Renders data from Ajax request to get driver by tag number begin/////
@@ -177,7 +153,6 @@ function renderData(data) {
           `<p>description: ${review.description}</p>`+
           `<p>comment: ${review.comment}</p>`+
           `<p>created: ${month}/${day}/${year}</p>`+
-          // `<button class="delete-button" id="${review._id}">delete</button>`+
           `<div class="border"></div>`);
   });
   
@@ -276,26 +251,10 @@ $(".submit-driver-review-button").click(function(event) {
 
 
 
-/////Event listener for delete review button begin//////
-$(".main .row").on('click', '.delete-button', function(event) {
-  //console.log(event);
-  reviewId = event.currentTarget.id;
-  deleteReview(reviewId);
-  $('.main .col-12').hide();
-  $('.review-driver-button').hide();
-  $('.main .row').append(
-    `<div class="col-12">
-      <p class="slogan">Review was deleted</p>
-    </div>`
-    )
-});
-/////Event listener for delete review button end//////
-
 
 
 ///Event listener for demo driver form  middle begin/////
 (function(event) {
-  console.log(event);
   demoTagNumber = 'ABC123';
   getDemoDriver(demoTagNumber, renderData);
   $('.search-driver').show();
