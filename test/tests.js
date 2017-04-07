@@ -115,8 +115,9 @@ describe('GET static pages', function() {
 
 
 
-  describe('access root folder', function() {
-  	it('should return 200 status code and html', function() {
+  describe('tests for static pages', function() {
+  	
+    it('should return 200 status code and html for root page', function() {
   	let res;
 	return chai.request(app)
 		.get('/')
@@ -128,8 +129,7 @@ describe('GET static pages', function() {
 		});	
   });	
 
-  describe('access add driver page', function() {
-    it('should return 200 status code and html', function() {
+    it('should return 200 status code and html for add driver page', function() {
     let res;
   return chai.request(app)
     .get('/add-driver.html')
@@ -139,7 +139,6 @@ describe('GET static pages', function() {
       res.should.be.html;
     });
     }); 
-  });	
 
 });
 //Test static endpoints end
