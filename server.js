@@ -12,7 +12,7 @@ const {Driver} = require('./models/models');
 
 const app = express();
 
-app.use(express.static('public'));
+app.use(express.static('public/views'));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 

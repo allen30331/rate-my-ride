@@ -132,7 +132,7 @@ describe('GET static pages', function() {
     it('should return 200 status code and html', function() {
     let res;
   return chai.request(app)
-    .get('/add-driver')
+    .get('/add-driver.html')
     .then(function(_res) {
       res = _res;
       res.should.have.status(200);
