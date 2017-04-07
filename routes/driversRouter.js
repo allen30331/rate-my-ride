@@ -4,7 +4,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
-const {Driver} = require('./models');
+const {Driver} = require('../models/models');
 
 
 

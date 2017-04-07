@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 
 const {app, runServer, closeServer} = require('../server');
 
-const {Driver} = require('../models');
+const {Driver} = require('../models/models');
 
 
 

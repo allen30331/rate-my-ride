@@ -5,10 +5,10 @@ const morgan = require('morgan');
 
 const path = require('path');
 
-const driversRouter = require('./driversRouter');
+const driversRouter = require('./routes/driversRouter');
 
-const {DATABASE_URL, PORT} = require('./config');
-const {Driver} = require('./models');
+const {DATABASE_URL, PORT} = require('./config/config');
+const {Driver} = require('./models/models');
 
 const app = express();
 
