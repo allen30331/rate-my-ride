@@ -62,6 +62,17 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 
 * git clone [https://github.com/allen30331/rate-my-ride](https://github.com/allen30331/rate-my-ride)
 
+* cd rate-my-ride
+
+* npm install
+
+* Make sure you have [mongoDB](https://www.mongodb.com/) installed. You will need to have the local database running when you start the app. 
+
+### Launching
+
+* npm start
+* open browser and go to [localhost:8080](localhost:8080)
+
 ## How it Works
 
 ### Search for a driver
