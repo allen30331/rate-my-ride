@@ -55,3 +55,9 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 ## Summary
 
 > Rate my Ride is a community driven app that gives users the ability to find more descriptive reviews of their Uber or Lyft driver. It is intended to give the user more information about the driver that is coming to pick them up. The description categories include, driver rating, driver description and comments. This gives the user valuable information that can help them decide if the driver is right for them, before taking the ride.
+
+## How it Works
+
+### Search for a driver
+
+> After you order Uber or Lyft, search Rate my Ride using the driver's tag number. If the driver is found, you will see that driver's rating, descriptions and comments. If you're comfortable with what you see, take the ride, if not, cancel!
