@@ -60,7 +60,7 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 
 ### Installing 
 
-* git clone [](https://github.com/allen30331/rate-my-ride)
+* git clone [https://github.com/allen30331/rate-my-ride](https://github.com/allen30331/rate-my-ride)
 
 ## How it Works
 
