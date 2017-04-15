@@ -87,3 +87,9 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 * Mocha
 * Continuous integration and deployment with Travis CI
 
+## Attributions 
+
+### Images
+
+* https://rydely.com/lyft-driver/
+
