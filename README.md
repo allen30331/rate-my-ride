@@ -50,6 +50,8 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 	<li><a href="https://rydely.com/lyft-driver/"></a>https://rydely.com/lyft-driver/</li>
 </ul> -->
 
+[![Build Status](https://travis-ci.org/allen30331/rate-my-ride.svg?branch=master)](https://travis-ci.org/allen30331/rate-my-ride)
+
 # Rate my Ride
 
 ## Summary
