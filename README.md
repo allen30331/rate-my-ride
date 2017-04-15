@@ -61,3 +61,11 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 ### Search for a driver
 
 > After you order Uber or Lyft, search Rate my Ride using the driver's tag number. If the driver is found, you will see that driver's rating, descriptions and comments. If you're comfortable with what you see, take the ride, if not, cancel!
+
+### Review a driver
+
+> After your ride, review the driver. Leave your rating, description and comment for others to see.
+
+### Add a driver
+
+> If a driver isn't in the database you can easily add them. You enter the driver's name, company, tag number and city.
