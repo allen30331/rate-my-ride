@@ -1,4 +1,4 @@
-<h1>Rate my Ride</h1>
+<!-- <h1>Rate my Ride</h1>
 
 Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <a href="https://rate-my-ride.herokuapp.com/">Rate my Ride</a> is a driver review app, designed to let users submit more descriptive reviews of their Uber and Lyft drivers. 
 <img src="public/images/screen-shots1.png">
@@ -48,4 +48,8 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 <h2>Image Attributions</h2>
 <ul>
 	<li><a href="https://rydely.com/lyft-driver/"></a>https://rydely.com/lyft-driver/</li>
-</ul>
+</ul> -->
+
+# Rate my Ride
+
+> [Rate my Ride](https://rate-my-ride.herokuapp.com) is a driver review app, designed to let users submit more descriptive reviews of their Uber and Lyft drivers. 
