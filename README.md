@@ -79,3 +79,11 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 * CSS3
 * Javascript
 * jQuery
+
+### Back End
+
+* Node.js
+* MongoDB
+* Mocha
+* Continuous integration and deployment with Travis CI
+
