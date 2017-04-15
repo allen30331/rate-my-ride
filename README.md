@@ -52,4 +52,6 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 
 # Rate my Ride
 
-> [Rate my Ride](https://rate-my-ride.herokuapp.com) is a driver review app, designed to let users submit more descriptive reviews of their Uber and Lyft drivers. 
+## Summary
+
+> Rate my Ride is a community driven app that gives users the ability to find more descriptive reviews of their Uber or Lyft driver. It is intended to give the user more information about the driver that is coming to pick them up. The description categories include, driver rating, driver description and comments. This gives the user valuable information that can help them decide if the driver is right for them, before taking the ride.
