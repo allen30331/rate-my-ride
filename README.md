@@ -69,3 +69,13 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 ### Add a driver
 
 > If a driver isn't in the database you can easily add them. You enter the driver's name, company, tag number and city.
+
+
+## Technology
+
+### Front End
+
+* HTML5
+* CSS3
+* Javascript
+* jQuery
