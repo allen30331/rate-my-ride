@@ -73,6 +73,10 @@ Second portfolio project for <a href="https://www.thinkful.com/">Thinkful</a>. <
 * npm start
 * open browser and go to [localhost:8080](localhost:8080)
 
+### Testing 
+
+* npm test
+
 ## How it Works
 
 ### Search for a driver
