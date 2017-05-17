@@ -146,11 +146,12 @@ function renderData(data) {
   $('.main .col-12').append(`<p class="reviews">Reviews</p>`)
 
   data.reviews.forEach(function (review) {
+    let date = new Date(review.created);
     $('.main .col-12').append(
           `<p>rating: ${review.driverRating}</p>`+
           `<p>description: ${review.description}</p>`+
           `<p>comment: ${review.comment}</p>`+
-          `<p>created: ${review.created}</p>`+
+          `<p>created: ${date.toDateString()}</p>`+
           `<div class="border"></div>`);
   });
   

@@ -104,13 +104,13 @@ function renderData(data) {
 
 
 
-  let now = new Date();
+  // let now = new Date();
   
-  let day = now.getDate();
+  // let day = now.getDate();
 
-  let month = now.getMonth();
+  // let month = now.getMonth();
 
-  let year = now.getFullYear();
+  // let year = now.getFullYear();
   
   if (data.status === 500) {
     $('.submit-driver-review-button').hide();
@@ -148,11 +148,12 @@ function renderData(data) {
   $('.main .col-12').append(`<p class="reviews">Reviews</p>`)
 
   data.reviews.forEach(function (review) {
+    let date = new Date(review.created);
     $('.main .col-12').append(
           `<p>rating: ${review.driverRating}</p>`+
           `<p>description: ${review.description}</p>`+
           `<p>comment: ${review.comment}</p>`+
-          `<p>created: ${month}/${day}/${year}</p>`+
+          `<p>created: ${date.toDateString()}</p>`+
           `<div class="border"></div>`);
   });
   
